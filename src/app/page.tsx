@@ -44,8 +44,8 @@ const services = [
 
 const industries = [
   {
-    name: "F1 Bahrain Grand Prix",
-    slug: "f1-bahrain-grand-prix",
+    name: "Formula 1",
+    slug: "formula-1",
     Icon: Flag,
   },
   {
@@ -161,7 +161,7 @@ export default function Page() {
       </section>
 
       {/* SERVICES GRID */}
-      <section className="bg-night px-6 py-32 lg:py-40">
+      <section className="border-t border-white/[0.04] bg-night px-6 py-32 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl font-bold text-fawn">
@@ -196,7 +196,7 @@ export default function Page() {
       </section>
 
       {/* SHOWREEL SECTION */}
-      <section className="bg-abyss px-6 py-32 lg:py-40">
+      <section className="border-t border-white/[0.04] bg-abyss px-6 py-32 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <div className="flex flex-col items-center gap-16 lg:flex-row lg:items-center lg:justify-between">
             <Reveal className="w-full lg:w-1/2">
@@ -233,7 +233,7 @@ export default function Page() {
       </section>
 
       {/* INDUSTRIES */}
-      <section className="bg-night px-6 py-32 lg:py-40">
+      <section className="border-t border-white/[0.04] bg-night px-6 py-32 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl font-bold text-fawn">
@@ -266,7 +266,7 @@ export default function Page() {
       </section>
 
       {/* WHY US */}
-      <section className="bg-abyss px-6 py-32 lg:py-40">
+      <section className="border-t border-white/[0.04] bg-abyss px-6 py-32 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl font-bold text-fawn">
@@ -311,7 +311,7 @@ export default function Page() {
       </section>
 
       {/* TESTIMONIALS */}
-      <section className="bg-night px-6 py-32 lg:py-40">
+      <section className="border-t border-white/[0.04] bg-night px-6 py-32 lg:py-40">
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl font-bold text-fawn">

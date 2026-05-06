@@ -10,7 +10,7 @@ const services = [
 ];
 
 const industries = [
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1 Bahrain Grand Prix" },
+  { href: "/industries/formula-1", label: "Formula 1" },
   { href: "/industries/telecom", label: "Telecom" },
   { href: "/industries/banking", label: "Banking & Finance" },
   { href: "/industries/government", label: "Government" },
@@ -37,15 +37,22 @@ export default function Footer() {
               </div>
               <span className="font-editorial text-fawn text-lg tracking-tight">Animation Bahrain</span>
             </Link>
-            <p className="font-mono text-xs text-fawn-muted leading-relaxed mb-6 max-w-xs">
-              Bahrain&apos;s premier cinematic animation studio. We craft brand films, 2D, 3D and
-              motion graphics for brands across the GCC.
+            <p className="font-mono text-xs text-fawn-muted leading-relaxed mb-4 max-w-xs">
+              A Bahrain Nights brand — cinematic animation for the GCC's leading brands, agencies, and institutions.
             </p>
             <div className="font-mono text-xs text-fawn-muted space-y-1">
-              <p>CR 113587-1</p>
+              <p>Bahrain Nights, CR 113587-1</p>
               <p>Hidd, Kingdom of Bahrain</p>
               <p>+973 3900 7750</p>
               <p>hello@animationbahrain.com</p>
+            </div>
+            <div className="mt-6 pt-6 border-t border-white/5">
+              <p className="font-mono text-[10px] text-fawn-muted/60">
+                Also from Bahrain Nights:{" "}
+                <a href="https://www.bahrainnights.com" target="_blank" rel="noopener" className="hover:text-amber transition-colors">BahrainNights.com</a>,{" "}
+                <a href="https://www.cinematicwebworks.com" target="_blank" rel="noopener" className="hover:text-amber transition-colors">CinematicWebWorks</a>,{" "}
+                <a href="https://www.eventsbahrain.com" target="_blank" rel="noopener" className="hover:text-amber transition-colors">EventsBahrain</a>
+              </p>
             </div>
           </div>
 
@@ -95,7 +102,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="font-mono text-xs text-fawn-muted">
-            &copy; {new Date().getFullYear()} Animation Bahrain. Part of Bahrain Nights Group.
+            &copy; {new Date().getFullYear()} Animation Bahrain — A Bahrain Nights brand
           </p>
           <div className="flex items-center gap-6">
             <Link href="/privacy" className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">

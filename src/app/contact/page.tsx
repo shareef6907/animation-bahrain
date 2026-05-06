@@ -75,10 +75,10 @@ export default function ContactPage() {
                 <div className="mt-12 pt-8 border-t border-surface">
                   <p className="font-mono text-xs text-fawn-muted">
                     A division of{" "}
-                    <span className="text-fawn">Bahrain Nights Group</span>
+                    <a href="https://www.bahrainnights.com" target="_blank" rel="noopener" className="text-fawn hover:text-amber transition-colors">Bahrain Nights</a>
                   </p>
                   <p className="font-mono text-xs text-fawn-muted mt-1">
-                    CR 113587-1
+                    CR 113587-1, Hidd, Kingdom of Bahrain
                   </p>
                 </div>
               </div>

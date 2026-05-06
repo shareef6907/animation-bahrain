@@ -137,6 +137,17 @@ const organizationSchema = {
   "@type": "Organization",
   name: "Bahrain Nights",
   url: "https://www.bahrainnights.com",
+  description: "Leading film production and animation company in the Kingdom of Bahrain, operating BahrainNights.com, AnimationBahrain.com, CinematicWebWorks.com, and EventsBahrain.com.",
+  parentOrganization: {
+    "@type": "Organization",
+    name: "Bahrain Nights",
+    url: "https://www.bahrainnights.com",
+  },
+  hasBrand: {
+    "@type": "Brand",
+    name: "Animation Bahrain",
+    url: "https://www.animationbahrain.com",
+  },
   member: [
     {
       "@type": "Organization",
@@ -145,14 +156,20 @@ const organizationSchema = {
     },
     {
       "@type": "Organization",
-      name: "Film Production Bahrain",
-      url: "https://www.filmproductionbahrain.com",
+      name: "CinematicWebWorks",
+      url: "https://www.cinematicwebworks.com",
     },
     {
       "@type": "Organization",
       name: "Events Bahrain",
       url: "https://www.eventsbahrain.com",
     },
+  ],
+  sameAs: [
+    "https://www.instagram.com/bh.nights",
+    "https://www.bahrainnights.com",
+    "https://www.cinematicwebworks.com",
+    "https://www.eventsbahrain.com",
   ],
 };
 

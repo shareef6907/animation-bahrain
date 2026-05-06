@@ -5,7 +5,7 @@ import MagneticButton from "@/components/MagneticButton";
 export const metadata: Metadata = {
   title: "About | Animation Bahrain",
   description:
-    "Learn about Bahrain's premier cinematic animation studio. Our story, our approach, our team.",
+    "Animation Bahrain is the animation division of Bahrain Nights, a leading film production and animation company in the Kingdom of Bahrain. Learn about our story, approach, and team.",
 };
 
 const values = [
@@ -129,21 +129,26 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-fawn-muted font-mono text-sm leading-relaxed">
                   <p>
-                    Animation Bahrain was founded on a simple premise: the GCC
+                    Animation Bahrain is the animation division of{" "}
+                    <a href="https://www.bahrainnights.com" target="_blank" rel="noopener" className="text-fawn hover:text-amber transition-colors">Bahrain Nights</a>,
+                    a leading film production and animation company in the Kingdom of
+                    Bahrain. Our parent company has built a reputation for cinematic
+                    excellence across live-action production, events, and digital
+                    content — spanning{" "}
+                    <a href="https://www.bahrainnights.com" target="_blank" rel="noopener" className="text-fawn hover:text-amber transition-colors">BahrainNights.com</a>,{" "}
+                    <a href="https://www.cinematicwebworks.com" target="_blank" rel="noopener" className="text-fawn hover:text-amber transition-colors">CinematicWebWorks.com</a>,{" "}
+                    <a href="https://www.eventsbahrain.com" target="_blank" rel="noopener" className="text-fawn hover:text-amber transition-colors">EventsBahrain.com</a>,
+                    and the NightsOut GCC network.
+                  </p>
+                  <p>
+                    We were founded on a simple premise: the GCC
                     market deserves cinematic-quality animation without the
                     traditional production timelines. We built our studio with a
                     filmmaker&apos;s mindset — story drives every decision, from
                     first frame to final render.
                   </p>
                   <p>
-                    Our roots are in live-action film and event production. We
-                    brought that discipline into animation: pre-visualisation
-                    before we animate, editorial thinking before we render, and a
-                    refusal to produce content that doesn&apos;t serve the story
-                    it&apos;s meant to tell.
-                  </p>
-                  <p>
-                    Today, we serve F1 sponsors, telecoms, banks, and government
+                    Today, we serve Formula 1 sponsors, telecoms, banks, and government
                     entities across the GCC — delivering broadcast-quality
                     animation that moves audiences the way cinema does. Not
                     because we animate, but because we know how to tell stories.
