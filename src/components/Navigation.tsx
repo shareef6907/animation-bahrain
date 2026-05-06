@@ -7,9 +7,10 @@ import { motion, AnimatePresence } from "framer-motion";
 const navLinks = [
   { href: "/services/2d-animation", label: "2D Animation" },
   { href: "/services/3d-animation", label: "3D Animation" },
-  { href: "/services/ai-animation", label: "AI Animation" },
+  { href: "/services/brand-films", label: "Brand Films" },
   { href: "/services/motion-graphics", label: "Motion Graphics" },
   { href: "/services/explainer-videos", label: "Explainer Videos" },
+  { href: "/services/product-films", label: "Product Films" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/industries/f1-bahrain-grand-prix", label: "F1" },
   { href: "/about", label: "About" },

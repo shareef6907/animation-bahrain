@@ -140,9 +140,10 @@ export default function ContactForm() {
           <option value="">Select a service</option>
           <option value="2D Animation">2D Animation</option>
           <option value="3D Animation">3D Animation</option>
-          <option value="AI Animation">AI Animation</option>
+          <option value="Brand Films">Brand Films</option>
           <option value="Motion Graphics">Motion Graphics</option>
           <option value="Explainer Videos">Explainer Videos</option>
+          <option value="Product Films">Product Films</option>
           <option value="Other">Other</option>
         </select>
       </div>

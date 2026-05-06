@@ -23,25 +23,26 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.animationbahrain.com"),
   title: {
-    default: "Animation Bahrain | AI-Native Animation Studio Manama",
+    default: "Animation Bahrain | Cinematic Animation Studio Manama",
     template: "%s | Animation Bahrain",
   },
   description:
-    "Bahrain's first AI-native animation studio. Higgsfield-powered 2D, 3D, and motion graphics for F1 sponsors, telecoms, banks and government across the GCC.",
+    "Bahrain's premier cinematic animation studio. We craft 2D, 3D, and motion graphics content for F1 sponsors, telecoms, banks and government across the GCC.",
   keywords: [
     "animation studio bahrain",
     "animation bahrain",
     "motion graphics bahrain",
     "2D animation bahrain",
     "3D animation bahrain",
-    "AI animation bahrain",
+    "brand films bahrain",
+    "product films bahrain",
     "animation company manama",
     "animation studio gcc",
     "Bahrain animation studio",
     "video production bahrain",
     "commercial animation bahrain",
-    "Higgsfield animation",
-    "AI-native animation",
+    "cinematic animation",
+    "animation production bahrain",
   ],
   authors: [{ name: "Animation Bahrain" }],
   creator: "Animation Bahrain",
@@ -51,23 +52,23 @@ export const metadata: Metadata = {
     locale: "en_BH",
     url: "https://www.animationbahrain.com",
     siteName: "Animation Bahrain",
-    title: "Animation Bahrain | AI-Native Animation Studio Manama",
+    title: "Animation Bahrain | Cinematic Animation Studio Manama",
     description:
-      "Bahrain's first AI-native animation studio. Higgsfield-powered 2D, 3D, and motion graphics for brands across the GCC.",
+      "Bahrain's premier cinematic animation studio. We craft 2D, 3D, and motion graphics content for brands across the GCC.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Animation Bahrain - AI-Native Animation Studio",
+        alt: "Animation Bahrain - Cinematic Animation Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Animation Bahrain | AI-Native Animation Studio",
+    title: "Animation Bahrain | Cinematic Animation Studio",
     description:
-      "Bahrain's first AI-native animation studio. Higgsfield-powered 2D, 3D, and motion graphics for brands across the GCC.",
+      "Bahrain's premier cinematic animation studio. We craft 2D, 3D, and motion graphics content for brands across the GCC.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -101,7 +102,7 @@ const localBusinessSchema = {
   alternateName: "Bahrain Nights - Animation Division",
   url: "https://www.animationbahrain.com",
   description:
-    "Bahrain's first AI-native animation studio powered by Higgsfield. Creating cinematic 2D, 3D, and motion graphics content for brands across the GCC.",
+    "Bahrain's premier cinematic animation studio. Creating 2D, 3D, motion graphics, brand films, and product films for brands across the GCC.",
   address: {
     "@type": "PostalAddress",
     addressCountry: "BH",

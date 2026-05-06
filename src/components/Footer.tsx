@@ -3,9 +3,10 @@ import Link from "next/link";
 const services = [
   { href: "/services/2d-animation", label: "2D Animation" },
   { href: "/services/3d-animation", label: "3D Animation" },
-  { href: "/services/ai-animation", label: "AI Animation" },
+  { href: "/services/brand-films", label: "Brand Films" },
   { href: "/services/motion-graphics", label: "Motion Graphics" },
   { href: "/services/explainer-videos", label: "Explainer Videos" },
+  { href: "/services/product-films", label: "Product Films" },
 ];
 
 const industries = [
@@ -40,7 +41,7 @@ export default function Footer() {
               </div>
             </Link>
             <p className="font-mono text-xs text-fawn-muted leading-relaxed mb-6 max-w-xs">
-              Bahrain&apos;s first AI-native animation studio. Higgsfield-powered 2D, 3D and
+              Bahrain&apos;s premier cinematic animation studio. We craft brand films, 2D, 3D and
               motion graphics for brands across the GCC.
             </p>
             <div className="font-mono text-xs text-fawn-muted space-y-1">

@@ -3,9 +3,9 @@ import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
 
 export const metadata = {
-  title: "Animation Bahrain | AI-Native Animation Studio Manama",
+  title: "Animation Bahrain | Cinematic Animation Studio Manama",
   description:
-    "Bahrain's first AI-native animation studio. Higgsfield-powered 2D, 3D, and motion graphics for F1 sponsors, telecoms, banks and government across the GCC.",
+    "Bahrain's premier cinematic animation studio. We craft 2D, 3D, and motion graphics content for F1 sponsors, telecoms, banks and government across the GCC.",
 };
 
 const services = [
@@ -20,9 +20,9 @@ const services = [
     slug: "3d-animation",
   },
   {
-    name: "AI Animation",
-    description: "Next-gen AI-powered animation workflows",
-    slug: "ai-animation",
+    name: "Brand Films",
+    description: "Cinematic narratives that don't look like ads",
+    slug: "brand-films",
   },
   {
     name: "Motion Graphics",
@@ -33,6 +33,11 @@ const services = [
     name: "Explainer Videos",
     description: "Clear, compelling narratives that explain it all",
     slug: "explainer-videos",
+  },
+  {
+    name: "Product Films",
+    description: "Product stories that turn features into desire",
+    slug: "product-films",
   },
 ];
 
@@ -57,9 +62,9 @@ const industries = [
 
 const whyUsPoints = [
   {
-    title: "Higgsfield-Powered",
+    title: "Cinematic First",
     description:
-      "Leveraging cutting-edge AI technology to accelerate animation production without compromising quality.",
+      "We approach every project with a filmmaker's eye — story, composition, pacing — before a single frame is rendered.",
   },
   {
     title: "GCC-Focused",
@@ -108,14 +113,14 @@ export default function Page() {
               className="font-editorial text-6xl font-bold tracking-tight text-fawn md:text-7xl lg:text-8xl"
               style={{ whiteSpace: "pre-line" }}
             >
-              Frame by Frame,
+              Cinematic Animation,
               <br />
-              We Build Worlds.
+              Built in Bahrain
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-6 font-mono text-sm tracking-wider text-fawn-muted uppercase">
-              Bahrain&apos;s First AI-Native Animation Studio
+              From explainer films to brand cinema — we craft animation that moves people, not just pixels.
             </p>
           </Reveal>
           <Reveal delay={0.4}>

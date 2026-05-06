@@ -5,14 +5,14 @@ import MagneticButton from "@/components/MagneticButton";
 export const metadata: Metadata = {
   title: "About | Animation Bahrain",
   description:
-    "Learn about Bahrain's first AI-native animation studio. Our team, our technology, our mission.",
+    "Learn about Bahrain's premier cinematic animation studio. Our story, our approach, our team.",
 };
 
 const values = [
   {
-    title: "Innovation First",
+    title: "Story First",
     description:
-      "We leverage AI-native tools to push creative boundaries, delivering work that was previously impossible.",
+      "Every frame serves the narrative. We don't animate unless it moves the story forward.",
     icon: (
       <svg
         className="w-6 h-6 text-abyss"
@@ -24,7 +24,7 @@ const values = [
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth={2}
-          d="M13 10V3L4 14h7v7l9-11h-7z"
+          d="M7 4V2m0 2v2m0-2H4m3 0h3M7 20v-2m0 2v2m0-2H4m3 0h3m10-4V8l-4-4-4 4v12m8-4V6l-4 4-4-4v8"
         />
       </svg>
     ),
@@ -77,21 +77,21 @@ const values = [
   },
 ];
 
-const higgsfieldFeatures = [
+const capabilities = [
   {
-    title: "Lightning Fast",
+    title: "Cinematic Direction",
     description:
-      "Generate production-ready animations in minutes, not weeks.",
+      "Every project begins with a director's vision. We approach animation as filmmaking, not asset production.",
   },
   {
-    title: "Cinematic Quality",
+    title: "Modern Pipeline",
     description:
-      "Hollywood-grade rendering and effects powered by cutting-edge AI.",
+      "A contemporary production workflow built for speed and quality. From concept to delivery without the bloat.",
   },
   {
-    title: "Fully Customizable",
+    title: "Bahrain-Based Team",
     description:
-      "Every frame can be refined to match your brand guidelines exactly.",
+      "Local creatives who understand the Gulf market, supported by international production partners.",
   },
 ];
 
@@ -110,7 +110,7 @@ export default function AboutPage() {
         </Reveal>
         <Reveal delay={0.1}>
           <p className="font-mono text-sm text-fawn-muted uppercase tracking-widest">
-            Bahrain&apos;s first AI-native animation studio
+            Cinematic Animation. Built in Bahrain. Made for the World.
           </p>
         </Reveal>
       </section>
@@ -129,25 +129,24 @@ export default function AboutPage() {
                 </h2>
                 <div className="space-y-6 text-fawn-muted font-mono text-sm leading-relaxed">
                   <p>
-                    Founded in Manama in 2024, Animation Bahrain emerged from a
-                    simple observation: the GCC market deserved world-class
-                    animation without the world-class turnaround times. Too
-                    often, regional brands were waiting months for content that
-                    could be produced in weeks.
+                    Animation Bahrain was founded on a simple premise: the GCC
+                    market deserves cinematic-quality animation without the
+                    traditional production timelines. We built our studio with a
+                    filmmaker&apos;s mindset — story drives every decision, from
+                    first frame to final render.
                   </p>
                   <p>
-                    We built our studio around AI-native workflows from day one,
-                    becoming the first such studio in Bahrain and among the
-                    pioneers across the Gulf. This isn&apos;t about replacing
-                    artists—it&apos;s about amplifying their capabilities with
-                    tools that think faster.
+                    Our roots are in live-action film and event production. We
+                    brought that discipline into animation: pre-visualisation
+                    before we animate, editorial thinking before we render, and a
+                    refusal to produce content that doesn&apos;t serve the story
+                    it&apos;s meant to tell.
                   </p>
                   <p>
-                    Our partnership with Higgsfield gives us access to
-                    generation capabilities that make traditional pipelines look
-                    archival. The result: we deliver premium animation at
-                    regional speeds, for brands who can&apos;t afford to wait
-                    three months for their campaign to go live.
+                    Today, we serve F1 sponsors, telecoms, banks, and government
+                    entities across the GCC — delivering broadcast-quality
+                    animation that moves audiences the way cinema does. Not
+                    because we animate, but because we know how to tell stories.
                   </p>
                 </div>
               </div>
@@ -194,7 +193,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Technology Section */}
+      {/* Capabilities Section */}
       <section className="py-32 px-6 bg-night">
         <div className="max-w-7xl mx-auto">
           <Reveal>
@@ -202,18 +201,18 @@ export default function AboutPage() {
               className="font-editorial text-4xl md:text-5xl text-fawn mb-16 text-center"
               style={{ fontWeight: 400 }}
             >
-              Powered by Higgsfield
+              Our Approach
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {higgsfieldFeatures.map((feature, index) => (
+            {capabilities.map((cap, index) => (
               <Reveal key={index} delay={index * 0.1}>
                 <div className="bg-surface rounded-2xl p-8">
                   <h3 className="font-editorial text-xl text-fawn mb-4">
-                    {feature.title}
+                    {cap.title}
                   </h3>
                   <p className="font-mono text-sm text-fawn-muted leading-relaxed">
-                    {feature.description}
+                    {cap.description}
                   </p>
                 </div>
               </Reveal>

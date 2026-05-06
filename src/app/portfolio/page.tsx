@@ -25,7 +25,7 @@ const portfolioItems = [
     client: "stc Bahrain",
   },
   {
-    category: "AI Animation",
+    category: "Brand Films",
     title: "Eid Campaign Series",
     client: "National Bank of Bahrain",
   },
@@ -35,7 +35,7 @@ const portfolioItems = [
     client: "KFH Bahrain",
   },
   {
-    category: "Motion Graphics",
+    category: "Product Films",
     title: "Tourism Destination Campaign",
     client: "Bahrain Tourism Authority",
   },

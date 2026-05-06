@@ -29,7 +29,7 @@ const serviceDescriptions: Record<string, string> = {
 const relatedServices = [
   { name: "2D Animation", href: "/services/2d-animation" },
   { name: "Motion Graphics", href: "/services/motion-graphics" },
-  { name: "AI Animation", href: "/services/ai-animation" },
+  { name: "Brand Films", href: "/services/brand-films" },
 ];
 
 export default function Page() {
@@ -64,7 +64,7 @@ export default function Page() {
             </Reveal>
             <Reveal delay={0.1}>
               <h2 className="font-editorial text-4xl text-fawn mb-8">Our Solution</h2>
-              <p className="font-mono text-sm text-fawn-muted leading-relaxed">Our AI-native pipeline delivers broadcast-quality animations in days, not weeks. We specialize in rapid-turnaround content that doesn&apos;t compromise on the cinematic quality the sport demands.</p>
+              <p className="font-mono text-sm text-fawn-muted leading-relaxed">Our modern production pipeline delivers broadcast-quality animations in days, not weeks. We specialize in rapid-turnaround content that doesn&apos;t compromise on the cinematic quality the sport demands.</p>
             </Reveal>
           </div>
         </div>
