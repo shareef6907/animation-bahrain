@@ -1,14 +1,14 @@
 {
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
           "value": "www.animationbahrain.com"
         }
       ],
-      "destination": "https://animationbahrain.com/:1",
+      "destination": "https://animationbahrain.com/:path*",
       "permanent": false
     }
   ]
