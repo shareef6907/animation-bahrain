@@ -55,31 +55,31 @@ export default function Page() {
       </section>
 
       {/* Challenges */}
-      <section className="py-32 bg-night">
+      <section className="py-32 lg:py-40 bg-night">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16">
             <Reveal>
-              <h2 className="font-editorial text-4xl text-fawn mb-8">The Challenge</h2>
-              <p className="font-mono text-sm text-fawn-muted leading-relaxed">F1 sponsors and racing teams need high-impact visual content that matches the prestige and energy of the Bahrain Grand Prix — but traditional animation production timelines don&apos;t align with racing schedules.</p>
+              <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mt-4 mb-16 font-mono text-base text-fawn-muted max-w-prose leading-relaxed">The Challenge</h2>
+              <p className="font-mono text-base text-fawn-muted max-w-prose leading-relaxed">F1 sponsors and racing teams need high-impact visual content that matches the prestige and energy of the Bahrain Grand Prix — but traditional animation production timelines don&apos;t align with racing schedules.</p>
             </Reveal>
             <Reveal delay={0.1}>
-              <h2 className="font-editorial text-4xl text-fawn mb-8">Our Solution</h2>
-              <p className="font-mono text-sm text-fawn-muted leading-relaxed">Our modern production pipeline delivers broadcast-quality animations in days, not weeks. We specialize in rapid-turnaround content that doesn&apos;t compromise on the cinematic quality the sport demands.</p>
+              <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mt-4 mb-16 font-mono text-base text-fawn-muted max-w-prose leading-relaxed">Our Solution</h2>
+              <p className="font-mono text-base text-fawn-muted max-w-prose leading-relaxed">Our modern production pipeline delivers broadcast-quality animations in days, not weeks. We specialize in rapid-turnaround content that doesn&apos;t compromise on the cinematic quality the sport demands.</p>
             </Reveal>
           </div>
         </div>
       </section>
 
       {/* Services for Industry */}
-      <section className="py-32 bg-abyss">
+      <section className="py-32 lg:py-40 bg-abyss">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal><h2 className="font-editorial text-4xl text-fawn mb-16">Animation Services for F1 Bahrain Grand Prix</h2></Reveal>
+          <Reveal><h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-16">Animation Services for F1 Bahrain Grand Prix</h2></Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {services.map((s, i) => (
               <Reveal key={s} delay={i * 0.07}>
-                <div className="p-8 rounded-2xl bg-surface border border-white/5 hover:border-amber/30 transition-colors">
+                <div className="p-10 rounded-2xl bg-surface border border-white/5 hover:border-white/20 transition-colors">
                   <h3 className="font-editorial text-xl text-fawn mb-3">{s}</h3>
-                  <p className="font-mono text-xs text-fawn-muted">{serviceDescriptions[s]}</p>
+                  <p className="font-mono text-base text-fawn-muted max-w-prose">{serviceDescriptions[s]}</p>
                 </div>
               </Reveal>
             ))}
@@ -88,7 +88,7 @@ export default function Page() {
       </section>
 
       {/* Case Study */}
-      <section className="py-32 bg-night">
+      <section className="py-32 lg:py-40 bg-night">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Reveal>
@@ -98,8 +98,8 @@ export default function Page() {
             </Reveal>
             <Reveal delay={0.1}>
               <span className="font-mono text-xs text-amber uppercase tracking-widest">Case Study</span>
-              <h2 className="font-editorial text-4xl text-fawn mt-4 mb-6">GP Racing Logistics</h2>
-              <p className="font-mono text-sm text-fawn-muted mb-8">We delivered a complete sponsor acknowledgment animation package for a regional logistics brand sponsoring the Bahrain Grand Prix. The 45-second broadcast-ready piece aired during race weekend across multiple MENA networks.</p>
+              <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mt-4 mb-6">GP Racing Logistics</h2>
+              <p className="font-mono text-base text-fawn-muted max-w-prose mb-8">We delivered a complete sponsor acknowledgment animation package for a regional logistics brand sponsoring the Bahrain Grand Prix. The 45-second broadcast-ready piece aired during race weekend across multiple MENA networks.</p>
               <MagneticButton href="/portfolio" variant="outline">See Full Portfolio</MagneticButton>
             </Reveal>
           </div>
@@ -107,13 +107,13 @@ export default function Page() {
       </section>
 
       {/* Related Services */}
-      <section className="py-32 bg-abyss">
+      <section className="py-32 lg:py-40 bg-abyss">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal><h2 className="font-editorial text-4xl text-fawn mb-16">Related Services</h2></Reveal>
+          <Reveal><h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-16">Related Services</h2></Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {relatedServices.map((s, i) => (
               <Reveal key={s.name} delay={i * 0.07}>
-                <Link href={s.href} className="block p-8 rounded-2xl bg-surface border border-white/5 hover:border-amber/30 transition-colors">
+                <Link href={s.href} className="block p-10 rounded-2xl bg-surface border border-white/5 hover:border-white/20 transition-colors">
                   <h3 className="font-editorial text-xl text-fawn mb-2">{s.name}</h3>
                   <span className="font-mono text-xs text-amber">Learn more →</span>
                 </Link>

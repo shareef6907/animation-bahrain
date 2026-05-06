@@ -68,7 +68,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* Portfolio Grid */}
-      <section className="py-24 px-6 max-w-7xl mx-auto">
+      <section className="py-32 lg:py-40 px-6 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioItems.map((item, index) => (
             <Reveal key={index} delay={index * 0.1}>
@@ -100,10 +100,10 @@ export default function PortfolioPage() {
                   <span className="font-mono text-xs text-amber uppercase tracking-wider">
                     {item.category}
                   </span>
-                  <h3 className="font-editorial text-xl text-fawn mt-2">
+                  <h3 className="font-editorial text-base text-fawn mt-2">
                     {item.title}
                   </h3>
-                  <p className="font-mono text-xs text-fawn-muted mt-1">
+                  <p className="font-mono text-base text-fawn-muted mt-1">
                     {item.client}
                   </p>
                 </div>
@@ -114,7 +114,7 @@ export default function PortfolioPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 bg-night">
+      <section className="py-32 lg:py-40 px-6 bg-night">
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
             <h2

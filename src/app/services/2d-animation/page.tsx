@@ -59,13 +59,13 @@ export default function Page() {
       </section>
 
       {/* Features Grid - 6 items, 3 cols */}
-      <section className="py-32 bg-night">
+      <section className="py-32 lg:py-40 bg-night">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal><h2 className="font-editorial text-4xl text-fawn mb-16">What We Deliver</h2></Reveal>
+          <Reveal><h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-16">What We Deliver</h2></Reveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((f, i) => (
               <Reveal key={f} delay={i * 0.07}>
-                <div className="p-8 rounded-2xl bg-surface border border-white/5 hover:border-amber/30 transition-colors">
+                <div className="p-10 rounded-2xl bg-surface border border-white/5 hover:border-white/20 transition-colors">
                   <div className="w-12 h-12 rounded-xl bg-amber/10 flex items-center justify-center mb-6">
                     <div className="w-3 h-3 bg-amber rounded-full" />
                   </div>
@@ -78,17 +78,16 @@ export default function Page() {
       </section>
 
       {/* Use Cases + Visual */}
-      <section className="py-32 bg-abyss">
+      <section className="py-32 lg:py-40 bg-abyss">
         <div className="max-w-7xl mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
-                <h2 className="font-editorial text-5xl text-fawn mb-8">Ideal For</h2>
-                <p className="font-mono text-sm text-fawn-muted mb-8">Our 2D animation services are perfect for brands looking to connect emotionally with their audience through storytelling. We create content that resonates across Bahrain, Saudi Arabia, UAE, and the wider GCC market.</p>
+                <h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn">Ideal For</h2>
+                <p className="font-mono text-base text-fawn-muted max-w-prose leading-relaxed mb-16">Our 2D animation services are perfect for brands looking to connect emotionally with their audience through storytelling. We create content that resonates across Bahrain, Saudi Arabia, UAE, and the wider GCC market.</p>
                 <ul className="space-y-4">
                   {useCases.map((uc) => (
                     <li key={uc} className="flex items-start gap-3">
-                      <span className="w-2 h-2 bg-amber rounded-full mt-2 flex-shrink-0" />
                       <span className="font-mono text-sm text-fawn">{uc}</span>
                     </li>
                   ))}
@@ -96,7 +95,7 @@ export default function Page() {
               </div>
             </Reveal>
             <Reveal delay={0.2}>
-              <div className="aspect-video rounded-2xl bg-surface border border-white/5 flex items-center justify-center">
+              <div className="aspect-video rounded-2xl bg-surface border border-white/5 hover:border-white/20 flex items-center justify-center">
                 <span className="font-mono text-xs text-fawn-muted">Service Showcase</span>
               </div>
             </Reveal>
@@ -105,15 +104,15 @@ export default function Page() {
       </section>
 
       {/* Process */}
-      <section className="py-32 bg-night">
+      <section className="py-32 lg:py-40 bg-night">
         <div className="max-w-7xl mx-auto px-6">
-          <Reveal><h2 className="font-editorial text-5xl text-fawn mb-16">Our Process</h2></Reveal>
+          <Reveal><h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-16">Our Process</h2></Reveal>
           <div className="space-y-6">
             {steps.map((step, i) => (
               <Reveal key={step} delay={i * 0.08}>
-                <div className="flex items-center gap-8 p-8 rounded-2xl bg-surface/50 border border-white/5">
+                <div className="flex items-center gap-8 p-10 rounded-2xl bg-surface/50 border border-white/5">
                   <span className="font-mono text-xs text-amber w-8">0{i + 1}</span>
-                  <span className="font-mono text-sm text-fawn">{step}</span>
+                  <span className="text-base max-w-prose text-fawn">{step}</span>
                 </div>
               </Reveal>
             ))}
@@ -122,10 +121,10 @@ export default function Page() {
       </section>
 
       {/* CTA */}
-      <section className="py-32 bg-abyss relative overflow-hidden">
+      <section className="py-32 lg:py-40 bg-abyss relative overflow-hidden">
         <div className="absolute inset-0" style={{background: 'linear-gradient(to top, rgba(217,119,6,0.08), transparent)'}} />
         <div className="relative z-10 max-w-3xl mx-auto text-center px-6">
-          <Reveal><h2 className="font-editorial text-5xl text-fawn mb-6">Ready to Get Started?</h2></Reveal>
+          <Reveal><h2 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-6">Ready to Get Started?</h2></Reveal>
           <Reveal delay={0.1}><p className="font-mono text-sm text-fawn-muted mb-10">Free consultation, no commitment.</p></Reveal>
           <Reveal delay={0.2}><MagneticButton href="/contact">Book a Free Consultation</MagneticButton></Reveal>
         </div>

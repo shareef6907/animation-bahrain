@@ -116,13 +116,13 @@ export default function AboutPage() {
       </section>
 
       {/* Story Section */}
-      <section className="py-32 px-6 bg-night">
+      <section className="py-32 lg:py-40 px-6 bg-night">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <Reveal>
               <div>
                 <h2
-                  className="font-editorial text-4xl md:text-5xl text-fawn mb-8"
+                  className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-8"
                   style={{ fontWeight: 400 }}
                 >
                   Our Story
@@ -163,11 +163,11 @@ export default function AboutPage() {
       </section>
 
       {/* Values Section */}
-      <section className="py-32 px-6 bg-abyss">
+      <section className="py-32 lg:py-40 px-6 bg-abyss">
         <div className="max-w-7xl mx-auto">
           <Reveal>
             <h2
-              className="font-editorial text-4xl md:text-5xl text-fawn mb-16 text-center"
+              className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-16 text-center"
               style={{ fontWeight: 400 }}
             >
               What We Stand For
@@ -207,11 +207,11 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {capabilities.map((cap, index) => (
               <Reveal key={index} delay={index * 0.1}>
-                <div className="bg-surface rounded-2xl p-8">
+                <div className="bg-surface rounded-2xl p-10">
                   <h3 className="font-editorial text-xl text-fawn mb-4">
                     {cap.title}
                   </h3>
-                  <p className="font-mono text-sm text-fawn-muted leading-relaxed">
+                  <p className="font-mono text-sm text-fawn-muted leading-relaxed text-base max-w-prose">
                     {cap.description}
                   </p>
                 </div>
@@ -222,11 +222,11 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-6 bg-abyss">
+      <section className="py-32 lg:py-40 px-6 bg-abyss">
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
             <h2
-              className="font-editorial text-4xl md:text-5xl text-fawn mb-8"
+              className="font-editorial text-4xl md:text-5xl lg:text-6xl text-fawn mb-8"
               style={{ fontWeight: 400 }}
             >
               Ready to Create?

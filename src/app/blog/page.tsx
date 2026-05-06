@@ -40,7 +40,7 @@ export default function BlogPage() {
       </section>
 
       {/* Coming Soon Section */}
-      <section className="py-24 px-6 bg-night">
+      <section className="py-32 lg:py-40 px-6 bg-night">
         <div className="max-w-4xl mx-auto">
           <Reveal>
             <div className="text-center mb-16">
@@ -50,7 +50,7 @@ export default function BlogPage() {
               >
                 Our first posts are coming soon
               </h2>
-              <p className="font-mono text-sm text-fawn-muted">
+              <p className="font-mono text-base max-w-prose text-fawn-muted">
                 Subscribe to be notified when we publish new content.
               </p>
             </div>
@@ -82,7 +82,7 @@ export default function BlogPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-6 bg-abyss">
+      <section className="py-32 lg:py-40 px-6 bg-abyss">
         <div className="max-w-4xl mx-auto text-center">
           <Reveal>
             <h2

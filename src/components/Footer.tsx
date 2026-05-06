@@ -32,13 +32,10 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
-              <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center shrink-0">
                 <span className="font-editorial text-abyss font-bold text-lg">A</span>
               </div>
-              <div>
-                <span className="font-editorial text-fawn text-lg tracking-tight">Animation</span>
-                <span className="font-mono text-amber text-xs block -mt-1">BAHRAIN</span>
-              </div>
+              <span className="font-editorial text-fawn text-lg tracking-tight">Animation Bahrain</span>
             </Link>
             <p className="font-mono text-xs text-fawn-muted leading-relaxed mb-6 max-w-xs">
               Bahrain&apos;s premier cinematic animation studio. We craft brand films, 2D, 3D and
