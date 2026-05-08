@@ -48,7 +48,7 @@ export default function Page() {
             <h1 className="font-editorial text-6xl md:text-8xl text-fawn mt-6 mb-6">Brand Films</h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="font-mono text-sm text-fawn-muted max-w-2xl mx-auto mb-10">Cinematic brand films that don't look like ads. We craft narratives that resonate emotionally, not just visually. Think short film quality applied to brand storytelling. For brands who want to be remembered, not just seen.</p>
+            <p className="font-mono text-sm text-fawn-muted max-w-2xl mx-auto mb-10">Cinematic brand films that don&apos;t look like ads. We craft narratives that resonate emotionally, not just visually. Think short film quality applied to brand storytelling. For brands who want to be remembered, not just seen.</p>
           </Reveal>
           <Reveal delay={0.3}>
             <div className="flex gap-4 justify-center flex-wrap">
