@@ -10,7 +10,7 @@ const services = [
 ];
 
 const industries = [
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1 Bahrain Grand Prix" },
+  { href: "/industries/formula-1", label: "F1 Bahrain Grand Prix" },
   { href: "/industries/telecom", label: "Telecom" },
   { href: "/industries/banking", label: "Banking & Finance" },
   { href: "/industries/government", label: "Government" },

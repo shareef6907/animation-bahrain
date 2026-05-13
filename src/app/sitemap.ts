@@ -11,7 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/services/motion-graphics`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/services/explainer-videos`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/services/product-films`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
-    { url: `${baseUrl}/industries/f1-bahrain-grand-prix`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${baseUrl}/industries/formula-1`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/industries/telecom`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/industries/banking`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${baseUrl}/industries/government`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },

@@ -12,7 +12,7 @@ const navLinks = [
   { href: "/services/explainer-videos", label: "Explainer Videos" },
   { href: "/services/product-films", label: "Product Films" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1" },
+  { href: "/industries/formula-1", label: "F1" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
