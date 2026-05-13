@@ -23,7 +23,7 @@ export default function ContactForm() {
     };
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("/contact/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -32,7 +32,8 @@ export default function ContactForm() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to submit form");
+        const data = await response.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to submit form");
       }
 
       setIsSuccess(true);
