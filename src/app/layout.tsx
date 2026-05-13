@@ -20,8 +20,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const BASE_URL = "https://animationbahrain.com";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.animationbahrain.com"),
+  metadataBase: new URL(BASE_URL),
   title: {
     default: "Animation Bahrain | Cinematic Animation Studio Manama",
     template: "%s | Animation Bahrain",
@@ -50,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_BH",
-    url: "https://www.animationbahrain.com",
+    url: BASE_URL,
     siteName: "Animation Bahrain",
     title: "Animation Bahrain | Cinematic Animation Studio Manama",
     description:
@@ -83,7 +85,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: "https://www.animationbahrain.com",
+    canonical: BASE_URL,
   },
 };
 
@@ -97,10 +99,10 @@ export const viewport: Viewport = {
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "VideoProductionStudio"],
-  "@id": "https://www.animationbahrain.com",
+  "@id": BASE_URL,
   name: "Animation Bahrain",
   alternateName: "Bahrain Nights - Animation Division",
-  url: "https://www.animationbahrain.com",
+  url: BASE_URL,
   description:
     "Bahrain's premier cinematic animation studio. Creating 2D, 3D, motion graphics, brand films, and product films for brands across the GCC.",
   address: {
@@ -141,7 +143,7 @@ const organizationSchema = {
     {
       "@type": "Organization",
       name: "Animation Bahrain",
-      url: "https://www.animationbahrain.com",
+      url: BASE_URL,
     },
     {
       "@type": "Organization",
