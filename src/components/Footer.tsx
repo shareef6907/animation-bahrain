@@ -1,4 +1,9 @@
 import Link from "next/link";
+import type { Locale } from "@/i18n/config";
+
+function localizedHref(href: string, locale: Locale): string {
+  return `/${locale}${href}`;
+}
 
 const services = [
   { href: "/services/2d-animation", label: "2D Animation" },
@@ -10,7 +15,7 @@ const services = [
 ];
 
 const industries = [
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1 Bahrain Grand Prix" },
+  { href: "/industries/formula-1", label: "F1 Bahrain Grand Prix" },
   { href: "/industries/telecom", label: "Telecom" },
   { href: "/industries/banking", label: "Banking & Finance" },
   { href: "/industries/government", label: "Government" },
@@ -23,7 +28,8 @@ const company = [
   { href: "/blog", label: "Blog" },
 ];
 
-export default function Footer() {
+export default function Footer({ locale = "en" }: { locale?: string }) {
+  const lang = locale as Locale;
   return (
     <footer className="bg-night border-t border-white/5">
       <div className="max-w-7xl mx-auto px-6 py-16">
@@ -31,7 +37,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-16">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center gap-3 mb-6">
+            <Link href={`/${lang}`} className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
                 <span className="font-editorial text-abyss font-bold text-lg">A</span>
               </div>
@@ -58,7 +64,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={localizedHref(s.href, lang)} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -72,7 +78,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {industries.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={localizedHref(s.href, lang)} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -86,7 +92,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {company.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={localizedHref(s.href, lang)} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -101,10 +107,10 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} Animation Bahrain. Part of Bahrain Nights Group.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+            <Link href={localizedHref("/privacy", lang)} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+            <Link href={localizedHref("/terms", lang)} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
               Terms
             </Link>
           </div>

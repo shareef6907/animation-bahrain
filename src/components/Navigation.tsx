@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import type { Locale } from "@/i18n/config";
 
 const navLinks = [
   { href: "/services/2d-animation", label: "2D Animation" },
@@ -12,12 +14,17 @@ const navLinks = [
   { href: "/services/explainer-videos", label: "Explainer Videos" },
   { href: "/services/product-films", label: "Product Films" },
   { href: "/portfolio", label: "Portfolio" },
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1" },
+  { href: "/industries/formula-1", label: "F1" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Navigation() {
+function localizedHref(href: string, locale: Locale): string {
+  return `/${locale}${href}`;
+}
+
+export default function Navigation({ locale = "en" }: { locale?: string }) {
+  const lang = locale as Locale;
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -41,7 +48,7 @@ export default function Navigation() {
       >
         <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href={`/${lang}`} className="flex items-center gap-3 group">
             <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
               <span className="font-editorial text-abyss font-bold text-lg">A</span>
             </div>
@@ -58,7 +65,7 @@ export default function Navigation() {
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
-                  href={link.href}
+                  href={localizedHref(link.href, lang)}
                   className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors duration-300 tracking-wider uppercase"
                 >
                   {link.label}
@@ -67,10 +74,11 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* CTA */}
+          {/* CTA + Language */}
           <div className="hidden lg:flex items-center gap-4">
+            <LanguageSwitcher />
             <Link
-              href="/contact"
+              href={localizedHref("/contact", lang)}
               className="font-mono text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
             >
               Start a Project
@@ -109,7 +117,7 @@ export default function Navigation() {
                   transition={{ delay: i * 0.05 }}
                 >
                   <Link
-                    href={link.href}
+                    href={localizedHref(link.href, lang)}
                     onClick={() => setMenuOpen(false)}
                     className="font-editorial text-4xl text-fawn hover:text-amber transition-colors"
                   >
@@ -119,7 +127,7 @@ export default function Navigation() {
               ))}
               <li className="mt-8">
                 <Link
-                  href="/contact"
+                  href={localizedHref("/contact", lang)}
                   onClick={() => setMenuOpen(false)}
                   className="font-mono text-sm bg-amber text-abyss px-8 py-4 rounded-lg font-medium tracking-wider uppercase inline-block"
                 >
