@@ -2,18 +2,12 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { works, WorkItem } from "@/data/work";
 
 interface CinematicSliderProps {
   items?: WorkItem[];
 }
-
-const YELLOW = "#FFD60A";
-const TEST_VIDEO =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
-const TEST_POSTER =
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg";
 
 function getAspectRatioClass(ratio: WorkItem["aspectRatio"]) {
   switch (ratio) {
@@ -123,7 +117,7 @@ export default function CinematicSlider({
         <div className="relative w-full h-full flex items-center justify-center p-4">
           <Image
             src={items[prevIndex].posterUrl}
-            alt={items[prevIndex].title}
+            alt=""
             fill
             className="object-contain"
             sizes="160px"
@@ -140,7 +134,7 @@ export default function CinematicSlider({
         <div className="relative w-full h-full flex items-center justify-center p-4">
           <Image
             src={items[nextIndex].posterUrl}
-            alt={items[nextIndex].title}
+            alt=""
             fill
             className="object-contain"
             sizes="160px"
@@ -154,28 +148,25 @@ export default function CinematicSlider({
           className="relative flex items-center justify-center w-full"
           style={{ height: "60vh" }}
         >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={active.slug}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.4 }}
-              className={`relative w-full flex items-center justify-center ${getAspectRatioClass(active.aspectRatio)}`}
-            >
-              <video
-                ref={videoRef}
-                src={active.videoUrl}
-                poster={active.posterUrl}
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="auto"
-                className="w-full h-full object-contain bg-black"
-              />
-            </motion.div>
-          </AnimatePresence>
+          <motion.div
+            key={active.slug}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: reducedMotion ? 0 : 0.4 }}
+            className={`relative w-full flex items-center justify-center ${getAspectRatioClass(active.aspectRatio)}`}
+          >
+            <video
+              ref={videoRef}
+              src={active.videoUrl}
+              poster={active.posterUrl}
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="w-full h-full object-contain bg-black"
+            />
+          </motion.div>
         </div>
       </div>
 
@@ -184,50 +175,6 @@ export default function CinematicSlider({
         {/* Left: counter */}
         <div className="font-mono text-sm text-white/60">
           {String(current + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
-        </div>
-
-        {/* Center: title block */}
-        <div className="flex-1 text-center px-8">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={`presenter-${active.slug}`}
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: reducedMotion ? 0 : 0.2 }}
-            >
-              <span
-                className="font-mono text-xs uppercase tracking-[0.2em] text-white/60 block mb-2"
-              >
-                {active.presenter}
-              </span>
-            </motion.div>
-          </AnimatePresence>
-          <AnimatePresence mode="wait">
-            <motion.h1
-              key={`title-${active.slug}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: reducedMotion ? 0 : 0.4 }}
-              className="font-editorial font-black uppercase leading-none tracking-[-0.02em] text-[#FFD60A]"
-              style={{ fontSize: "clamp(48px, 8vw, 128px)" }}
-            >
-              {active.title}
-            </motion.h1>
-          </AnimatePresence>
-          <AnimatePresence mode="wait">
-            <motion.p
-              key={`client-${active.slug}`}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: reducedMotion ? 0 : 0.2 }}
-              className="font-mono text-base text-white/80 mt-3"
-            >
-              {active.client}
-            </motion.p>
-          </AnimatePresence>
         </div>
 
         {/* Right: arrows */}
@@ -255,7 +202,7 @@ export default function CinematicSlider({
 
       {/* aria-live for screen readers */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
-        Slide {current + 1} of {total}: {active.title}
+        Slide {current + 1} of {total}
       </div>
     </section>
   );
