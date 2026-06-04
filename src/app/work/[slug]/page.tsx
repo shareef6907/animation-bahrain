@@ -24,7 +24,7 @@ export default async function WorkPage({ params }: Props) {
       >
         <video
           src={work.videoUrl}
-          poster={work.posterUrl}
+          poster={work.posterUrl ?? undefined}
           autoPlay
           muted
           loop

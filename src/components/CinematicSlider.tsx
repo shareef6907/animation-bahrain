@@ -115,13 +115,17 @@ export default function CinematicSlider({
         className="group absolute left-0 top-1/2 z-20 flex items-center -translate-y-1/2 w-[12vw] max-w-[160px] h-full justify-center opacity-30 hover:opacity-60 transition-opacity duration-300"
       >
         <div className="relative w-full h-full flex items-center justify-center p-4">
-          <Image
-            src={items[prevIndex].posterUrl}
-            alt=""
-            fill
-            className="object-contain"
-            sizes="160px"
-          />
+          {items[prevIndex].posterUrl ? (
+            <Image
+              src={items[prevIndex].posterUrl!}
+              alt=""
+              fill
+              className="object-contain"
+              sizes="160px"
+            />
+          ) : (
+            <div className="w-full h-full bg-black/50" />
+          )}
         </div>
       </button>
 
@@ -132,13 +136,17 @@ export default function CinematicSlider({
         className="group absolute right-0 top-1/2 z-20 flex items-center -translate-y-1/2 w-[12vw] max-w-[160px] h-full justify-center opacity-30 hover:opacity-60 transition-opacity duration-300"
       >
         <div className="relative w-full h-full flex items-center justify-center p-4">
-          <Image
-            src={items[nextIndex].posterUrl}
-            alt=""
-            fill
-            className="object-contain"
-            sizes="160px"
-          />
+          {items[nextIndex].posterUrl ? (
+            <Image
+              src={items[nextIndex].posterUrl!}
+              alt=""
+              fill
+              className="object-contain"
+              sizes="160px"
+            />
+          ) : (
+            <div className="w-full h-full bg-black/50" />
+          )}
         </div>
       </button>
 
@@ -158,7 +166,7 @@ export default function CinematicSlider({
             <video
               ref={videoRef}
               src={active.videoUrl}
-              poster={active.posterUrl}
+              poster={active.posterUrl ?? undefined}
               autoPlay
               muted
               loop

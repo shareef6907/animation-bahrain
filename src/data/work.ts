@@ -8,7 +8,7 @@ export interface WorkItem {
   category: string;
   aspectRatio: WorkAspectRatio;
   videoUrl: string;
-  posterUrl: string;
+  posterUrl: string | null;
   order: number;
 }
 
@@ -20,10 +20,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-1.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-1.jpg",
+    videoUrl: "/videos/slide-1.mp4",
+    posterUrl: null,
     order: 1,
   },
   {
@@ -33,10 +31,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-2.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-2.jpg",
+    videoUrl: "/videos/slide-2.mp4",
+    posterUrl: null,
     order: 2,
   },
   {
@@ -46,10 +42,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-3.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-3.jpg",
+    videoUrl: "/videos/slide-3.mp4",
+    posterUrl: null,
     order: 3,
   },
   {
@@ -59,10 +53,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-4.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-4.jpg",
+    videoUrl: "/videos/slide-4.mp4",
+    posterUrl: null,
     order: 4,
   },
   {
@@ -72,10 +64,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-5.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-5.jpg",
+    videoUrl: "/videos/slide-5.mp4",
+    posterUrl: null,
     order: 5,
   },
   {
@@ -85,10 +75,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "horizontal",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-6.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-6.jpg",
+    videoUrl: "/videos/slide-6.mp4",
+    posterUrl: null,
     order: 6,
   },
   {
@@ -98,10 +86,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "vertical",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-7.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-7.jpg",
+    videoUrl: "/videos/slide-7.mp4",
+    posterUrl: null,
     order: 7,
   },
   {
@@ -111,10 +97,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "vertical",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-8.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-8.jpg",
+    videoUrl: "/videos/slide-8.mp4",
+    posterUrl: null,
     order: 8,
   },
   {
@@ -124,10 +108,8 @@ export const works: WorkItem[] = [
     client: "",
     category: "",
     aspectRatio: "square",
-    videoUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-9.mp4",
-    posterUrl:
-      "https://events-bahrain.s3.us-east-1.amazonaws.com/animation/slide-9.jpg",
+    videoUrl: "/videos/slide-9.mp4",
+    posterUrl: null,
     order: 9,
   },
 ];

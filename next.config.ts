@@ -15,10 +15,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "commondatastorage.googleapis.com",
       },
-      {
-        protocol: "https",
-        hostname: "events-bahrain.s3.us-east-1.amazonaws.com",
-      },
     ],
   },
 };
