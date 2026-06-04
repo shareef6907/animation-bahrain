@@ -232,7 +232,7 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
         }}
       >
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3 font-mono">
+          <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3 font-mono pl-0.5">
             {active.category}
           </p>
           <h1

@@ -39,19 +39,21 @@ export default function Navigation() {
             : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-8">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
-              <span className="font-body text-abyss font-bold text-lg">A</span>
-            </div>
-            <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
-              Animation Bahrain
-            </span>
-          </Link>
+        <nav className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+          {/* Column 1: logo, left-aligned */}
+          <div className="justify-self-start">
+            <Link href="/" className="flex items-center gap-3 group shrink-0">
+              <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
+                <span className="font-body text-abyss font-bold text-lg">A</span>
+              </div>
+              <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
+                Animation Bahrain
+              </span>
+            </Link>
+          </div>
 
-          {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center justify-center gap-8 flex-1">
+          {/* Column 2: nav links, perfectly centered */}
+          <ul className="hidden lg:flex items-center justify-center gap-8">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -64,8 +66,8 @@ export default function Navigation() {
             ))}
           </ul>
 
-          {/* CTA */}
-          <div className="hidden lg:flex items-center gap-4 shrink-0">
+          {/* Column 3: CTA, right-aligned */}
+          <div className="hidden lg:flex items-center justify-self-end gap-4">
             <Link
               href="/contact"
               className="font-body text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
@@ -77,7 +79,7 @@ export default function Navigation() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5"
+            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 ml-auto"
             aria-label="Toggle menu"
           >
             <span className={`block w-6 h-0.5 bg-fawn transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
