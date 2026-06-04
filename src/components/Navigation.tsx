@@ -43,9 +43,9 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
-              <span className="font-editorial text-abyss font-bold text-lg">A</span>
+              <span className="font-body text-abyss font-bold text-lg">A</span>
             </div>
-            <span className="font-editorial text-fawn text-lg tracking-tight whitespace-nowrap">
+            <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
               Animation Bahrain
             </span>
           </Link>
@@ -56,7 +56,7 @@ export default function Navigation() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors duration-300 tracking-wider uppercase"
+                  className="font-body text-xs text-fawn-muted hover:text-amber transition-colors duration-300 tracking-wider uppercase"
                 >
                   {link.label}
                 </Link>
@@ -68,7 +68,7 @@ export default function Navigation() {
           <div className="hidden lg:flex items-center gap-4 shrink-0">
             <Link
               href="/contact"
-              className="font-mono text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
+              className="font-body text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
             >
               Start a Project
             </Link>

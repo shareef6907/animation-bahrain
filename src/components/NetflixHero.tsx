@@ -236,7 +236,7 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
             {active.category}
           </p>
           <h1
-            className="text-white font-bold leading-none mb-4"
+            className="text-white font-display leading-none mb-4"
             style={{ fontSize: "clamp(48px, 8vw, 120px)" }}
           >
             {active.title}
