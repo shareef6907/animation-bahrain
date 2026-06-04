@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import MagneticButton from "@/components/MagneticButton";
+import VideoHeader from "@/components/VideoHeader";
 import type { Locale } from "@/i18n/config";
 import { locales } from "@/i18n/config";
 
@@ -42,22 +43,10 @@ const services = [
 ];
 
 const industries = [
-  {
-    name: "F1 Bahrain Grand Prix",
-    slug: "formula-1",
-  },
-  {
-    name: "Telecom",
-    slug: "telecom",
-  },
-  {
-    name: "Banking",
-    slug: "banking",
-  },
-  {
-    name: "Government",
-    slug: "government",
-  },
+  { name: "F1 Bahrain Grand Prix", slug: "formula-1" },
+  { name: "Telecom", slug: "telecom" },
+  { name: "Banking", slug: "banking" },
+  { name: "Government", slug: "government" },
 ];
 
 const whyUsPoints = [
@@ -109,63 +98,8 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      {/* HERO SECTION */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-6">
-        <div
-          className="absolute inset-0 z-0"
-          style={{
-            background:
-              "radial-gradient(ellipse at center, transparent 0%, #0A0A0A 70%)",
-          }}
-        />
-        <div className="z-10 text-center">
-          <Reveal>
-            <h1
-              className="font-editorial text-6xl font-bold tracking-tight text-fawn md:text-7xl lg:text-8xl"
-              style={{ whiteSpace: "pre-line" }}
-            >
-              Cinematic Animation,
-              <br />
-              Built in Bahrain
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-6 font-mono text-sm tracking-wider text-fawn-muted uppercase">
-              From explainer films to brand cinema — we craft animation that moves people, not just pixels.
-            </p>
-          </Reveal>
-          <Reveal delay={0.4}>
-            <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <MagneticButton href={localizedHref("/contact", locale)} variant="primary">
-                Start Your Project
-              </MagneticButton>
-              <MagneticButton href={localizedHref("/portfolio", locale)} variant="outline">
-                View Our Work
-              </MagneticButton>
-            </div>
-          </Reveal>
-        </div>
-        <Reveal delay={0.6} className="absolute bottom-12 z-10">
-          <div className="flex flex-col items-center gap-2 text-fawn-muted">
-            <span className="font-mono text-xs uppercase tracking-widest">
-              Scroll
-            </span>
-            <svg
-              className="h-5 w-5 animate-bounce"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </Reveal>
-      </section>
+      {/* VIDEO GRID HEADER — replaces old hero */}
+      <VideoHeader locale={locale} />
 
       {/* SERVICES GRID */}
       <section className="bg-night px-6 py-24">
@@ -177,8 +111,7 @@ export default async function Page({ params }: Props) {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 font-mono text-sm text-fawn-muted">
-              From concept to final render, we deliver excellence at every
-              frame.
+              From concept to final render, we deliver excellence at every frame.
             </p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -254,8 +187,7 @@ export default async function Page({ params }: Props) {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 font-mono text-sm text-fawn-muted">
-              Tailored animation solutions for the GCC&apos;s most demanding
-              sectors.
+              Tailored animation solutions for the GCC&apos;s most demanding sectors.
             </p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -288,8 +220,7 @@ export default async function Page({ params }: Props) {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="mt-4 font-mono text-sm text-fawn-muted">
-              The advantages of partnering with Bahrain&apos;s premier animation
-              studio.
+              The advantages of partnering with Bahrain&apos;s premier animation studio.
             </p>
           </Reveal>
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
