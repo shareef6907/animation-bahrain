@@ -1,0 +1,3 @@
+*.mp4 binary -text -diff
+*.mov binary -text -diff
+*.webm binary -text -diff
