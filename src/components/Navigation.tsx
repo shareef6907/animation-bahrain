@@ -39,22 +39,19 @@ export default function Navigation() {
             : "bg-transparent"
         }`}
       >
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+        <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between gap-8">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
               <span className="font-editorial text-abyss font-bold text-lg">A</span>
             </div>
-            <div>
-              <span className="font-editorial text-fawn text-lg tracking-tight">
-                Animation
-              </span>
-              <span className="font-mono text-amber text-xs block -mt-1">BAHRAIN</span>
-            </div>
+            <span className="font-editorial text-fawn text-lg tracking-tight whitespace-nowrap">
+              Animation Bahrain
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <ul className="hidden lg:flex items-center gap-8">
+          <ul className="hidden lg:flex items-center justify-center gap-8 flex-1">
             {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
@@ -68,7 +65,7 @@ export default function Navigation() {
           </ul>
 
           {/* CTA */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4 shrink-0">
             <Link
               href="/contact"
               className="font-mono text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
