@@ -12,7 +12,7 @@ const ALL_VIDEOS = [
   { src: "/videos/slide-6.mp4", aspect: "horizontal" as const },
   { src: "/videos/vertical-1.mp4", aspect: "vertical" as const },
   { src: "/videos/vertical-2.mp4", aspect: "vertical" as const },
-  { src: "/videos/slide-9.mp4", aspect: "square" as const },
+  { src: "/videos/slide-6.mp4", aspect: "square" as const },
 ];
 
 export default function UnifiedVideoSlider() {
