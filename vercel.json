@@ -8,7 +8,7 @@
           "value": "www.animationbahrain.com"
         }
       ],
-      "destination": "https://animationbahrain.com/:1",
+      "destination": "https://animationbahrain.com",
       "permanent": false
     }
   ]

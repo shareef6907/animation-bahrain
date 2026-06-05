@@ -33,18 +33,15 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
-                <span className="font-editorial text-abyss font-bold text-lg">A</span>
+                <span className="font-body text-abyss font-bold text-lg">A</span>
               </div>
-              <div>
-                <span className="font-editorial text-fawn text-lg tracking-tight">Animation</span>
-                <span className="font-mono text-amber text-xs block -mt-1">BAHRAIN</span>
-              </div>
+              <span className="font-body text-fawn text-lg tracking-tight">Animation Bahrain</span>
             </Link>
-            <p className="font-mono text-xs text-fawn-muted leading-relaxed mb-6 max-w-xs">
+            <p className="font-body text-xs text-fawn-muted leading-relaxed mb-6 max-w-xs">
               Bahrain&apos;s premier cinematic animation studio. We craft brand films, 2D, 3D and
               motion graphics for brands across the GCC.
             </p>
-            <div className="font-mono text-xs text-fawn-muted space-y-1">
+            <div className="font-body text-xs text-fawn-muted space-y-1">
               <p>CR 113587-1</p>
               <p>Hidd, Kingdom of Bahrain</p>
               <p>+973 3900 7750</p>
@@ -54,11 +51,11 @@ export default function Footer() {
 
           {/* Services */}
           <div>
-            <h4 className="font-mono text-xs text-amber uppercase tracking-widest mb-6">Services</h4>
+            <h4 className="font-body text-xs text-amber uppercase tracking-widest mb-6">Services</h4>
             <ul className="space-y-3">
               {services.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={s.href} className="font-body text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -68,11 +65,11 @@ export default function Footer() {
 
           {/* Industries */}
           <div>
-            <h4 className="font-mono text-xs text-amber uppercase tracking-widest mb-6">Industries</h4>
+            <h4 className="font-body text-xs text-amber uppercase tracking-widest mb-6">Industries</h4>
             <ul className="space-y-3">
               {industries.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={s.href} className="font-body text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -82,11 +79,11 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="font-mono text-xs text-amber uppercase tracking-widest mb-6">Company</h4>
+            <h4 className="font-body text-xs text-amber uppercase tracking-widest mb-6">Company</h4>
             <ul className="space-y-3">
               {company.map((s) => (
                 <li key={s.href}>
-                  <Link href={s.href} className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+                  <Link href={s.href} className="font-body text-xs text-fawn-muted hover:text-amber transition-colors">
                     {s.label}
                   </Link>
                 </li>
@@ -97,14 +94,14 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="font-mono text-xs text-fawn-muted">
+          <p className="font-body text-xs text-fawn-muted">
             &copy; {new Date().getFullYear()} Animation Bahrain. Part of Bahrain Nights Group.
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/privacy" className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+            <Link href="/privacy" className="font-body text-xs text-fawn-muted hover:text-amber transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="font-mono text-xs text-fawn-muted hover:text-amber transition-colors">
+            <Link href="/terms" className="font-body text-xs text-fawn-muted hover:text-amber transition-colors">
               Terms
             </Link>
           </div>

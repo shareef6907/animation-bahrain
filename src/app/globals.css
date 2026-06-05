@@ -13,8 +13,8 @@
   --color-amber-dark: #B45309;
 
   /* Fonts */
-  --font-editorial: var(--font-editorial), Georgia, serif;
-  --font-mono: var(--font-mono), ui-monospace, monospace;
+  --font-display: var(--font-display), sans-serif;
+  --font-body: var(--font-body), sans-serif;
 }
 
 :root {
@@ -39,7 +39,7 @@ html {
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   overflow-x: hidden;
   cursor: none;
 }
