@@ -180,7 +180,6 @@ export default function RootLayout({
       </head>
       <body className="noise-overlay antialiased">
         <ClientComponents>
-          <Navigation />
           <main className="min-h-screen">{children}</main>
         </ClientComponents>
       </body>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Volume2, VolumeX } from "lucide-react";
 
 const ALL_VIDEOS = [
   { src: "/videos/slide-1.mp4", aspect: "horizontal" as const },
@@ -15,17 +15,30 @@ const ALL_VIDEOS = [
   { src: "/videos/slide-6.mp4", aspect: "square" as const },
 ];
 
+const SLIDER_MUTED_KEY = "animation_bahrain_slider_muted";
+
 export default function UnifiedVideoSlider() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const current = ALL_VIDEOS[currentIndex];
 
+  // Initialize muted state from localStorage
+  useEffect(() => {
+    const stored = localStorage.getItem(SLIDER_MUTED_KEY);
+    if (stored !== null) {
+      setIsMuted(stored === "true");
+    }
+  }, []);
+
   const goTo = useCallback(
     (index: number) => {
       if (isTransitioning) return;
-      const next = ((index % ALL_VIDEOS.length) + ALL_VIDEOS.length) % ALL_VIDEOS.length;
+      const next =
+        ((index % ALL_VIDEOS.length) + ALL_VIDEOS.length) %
+        ALL_VIDEOS.length;
       if (next === currentIndex) return;
       setIsTransitioning(true);
       setTimeout(() => {
@@ -54,11 +67,24 @@ export default function UnifiedVideoSlider() {
     return () => window.removeEventListener("keydown", handler);
   }, [prev, next]);
 
+  // Sync muted to video element
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = isMuted;
+    }
+  }, [isMuted]);
+
+  const toggleMute = () => {
+    const next = !isMuted;
+    setIsMuted(next);
+    localStorage.setItem(SLIDER_MUTED_KEY, String(next));
+  };
+
   return (
     <section className="w-full bg-black py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
         {/* Slider stage */}
-<div
+        <div
           className="relative w-full bg-black"
           style={{ height: "70vh", maxHeight: "700px" }}
         >
@@ -67,7 +93,7 @@ export default function UnifiedVideoSlider() {
             ref={videoRef}
             src={current.src}
             autoPlay
-            muted
+            muted={isMuted}
             loop
             playsInline
             preload="auto"
@@ -94,12 +120,25 @@ export default function UnifiedVideoSlider() {
           >
             <ChevronRight size={24} />
           </button>
+
+          {/* Mute/unmute button */}
+          <button
+            onClick={toggleMute}
+            aria-label={isMuted ? "Unmute videos" : "Mute videos"}
+            className="absolute bottom-4 right-4 w-12 h-12 rounded-full bg-black/50 hover:bg-black/80 border border-white/30 flex items-center justify-center text-white transition z-10"
+          >
+            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          </button>
         </div>
 
         {/* Dot indicators */}
-        <div className="mt-8 flex justify-center gap-2" role="tablist" aria-label="Video navigation">
+        <div
+          className="mt-8 flex justify-center gap-2"
+          role="tablist"
+          aria-label="Video navigation"
+        >
           {ALL_VIDEOS.map((_, i) => (
-<button
+            <button
               key={i}
               onClick={() => goTo(i)}
               role="tab"

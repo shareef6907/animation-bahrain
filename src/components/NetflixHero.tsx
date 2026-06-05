@@ -180,7 +180,6 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
           src={active.videoPath}
           autoPlay
           muted={isMuted}
-          loop
           playsInline
           preload="auto"
           onEnded={handleVideoEnded}
@@ -201,7 +200,6 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
             src={videos[nextIndex].videoPath}
             autoPlay
             muted={isMuted}
-            loop
             playsInline
             preload="auto"
             className={`absolute inset-0 w-full h-full object-cover ${
