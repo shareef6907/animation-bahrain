@@ -32,7 +32,7 @@ export function VerticalVideoSection({ src }: VerticalVideoSectionProps) {
   };
 
   return (
-    <section className="w-full bg-black py-24 lg:py-32">
+    <section className="w-full bg-black py-32 lg:py-48">
       <div className="container mx-auto px-6 flex flex-col items-center">
         <div className="relative">
           <video
