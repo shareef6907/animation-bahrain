@@ -171,7 +171,7 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
   return (
     <section
       className="relative w-full bg-black overflow-hidden"
-      style={{ height: "100vh" }}
+      style={{ height: "100dvh" }}
       aria-roledescription="carousel"
       aria-label="Animation Bahrain hero video showcase"
     >
