@@ -1,7 +1,7 @@
 import NetflixHero from "@/components/NetflixHero";
 import { CompanySection } from "@/components/CompanySection";
 import { VerticalVideoSection } from "@/components/VerticalVideoSection";
-import MinimalFooter from "@/components/MinimalFooter";
+import UnifiedVideoSlider from "@/components/UnifiedVideoSlider";
 import Navigation from "@/components/Navigation";
 import { FloatingContact } from "@/components/FloatingContact";
 import { getHeroVideos } from "@/lib/hero";
@@ -18,7 +18,7 @@ export default async function HomePage() {
       <CompanySection />
       <VerticalVideoSection src="/videos/vertical-1.mp4" />
       <VerticalVideoSection src="/videos/vertical-2.mp4" />
-      <MinimalFooter />
+      <UnifiedVideoSlider />
       <FloatingContact />
     </main>
   );

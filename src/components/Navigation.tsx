@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Mail, MessageCircle, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
@@ -26,17 +25,8 @@ export default function Navigation() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
-        {/* Column 1: logo, left-aligned */}
-        <div className="justify-self-start">
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
-              <span className="font-body text-abyss font-bold text-lg">A</span>
-            </div>
-            <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
-              Animation Bahrain
-            </span>
-          </Link>
-        </div>
+        {/* Column 1: empty */}
+        <div />
 
         {/* Column 2: empty — three-column grid keeps spacing balanced */}
         <div />
