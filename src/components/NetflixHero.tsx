@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from "react";
-import Link from "next/link";
 import { HeroVideo } from "@/lib/hero";
 
 interface NetflixHeroProps {
@@ -210,12 +209,12 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
           />
         )}
 
-        {/* Gradient overlay */}
+        {/* Bottom fade-to-black gradient */}
         <div
-          className="absolute inset-0"
+          className="absolute inset-x-0 bottom-0 pointer-events-none z-10"
           style={{
-            background:
-              "linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.85) 100%)",
+            height: "30%",
+            background: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 50%, black 100%)",
           }}
         />
       </div>
@@ -226,46 +225,31 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
           isTextVisible ? "opacity-100" : "opacity-0 pointer-events-none"
         }`}
         style={{
-          top: "35vh",
+          top: "50vh",
+          transform: "translateY(-60%)",
           transitionProperty: "opacity",
           transitionDuration: reducedMotion ? "0ms" : "300ms",
         }}
       >
         <div className="max-w-2xl">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3 font-mono pl-0.5">
+          <p
+            className="text-xs uppercase tracking-[0.2em] text-white/60 mb-3 font-mono pl-0.5"
+            style={{ fontSize: "11px" }}
+          >
             {active.category}
           </p>
           <h1
             className="text-white font-display leading-none mb-4"
-            style={{ fontSize: "clamp(48px, 8vw, 120px)" }}
+            style={{ fontSize: "clamp(36px, 9vw, 96px)" }}
           >
             {active.title}
           </h1>
-          <p className="text-white/80 text-base md:text-lg max-w-xl line-clamp-3">
+          <p
+            className="text-white/80 max-w-xl line-clamp-2"
+            style={{ fontSize: "14px" }}
+          >
             {active.description}
           </p>
-          <div className="flex gap-3 mt-6">
-            <Link
-              href={`/work/${currentIndex + 1}`}
-              className="flex items-center gap-2 bg-white text-black px-6 py-3 rounded-md font-semibold text-sm hover:bg-white/90 transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M8 5v14l11-7z" />
-              </svg>
-              Watch Full
-            </Link>
-            <Link
-              href={`/work/${currentIndex + 1}`}
-              className="flex items-center gap-2 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-md font-semibold text-sm hover:bg-white/30 transition-colors"
-            >
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="8" x2="12" y2="12" />
-                <line x1="12" y1="16" x2="12.01" y2="16" />
-              </svg>
-              More Info
-            </Link>
-          </div>
         </div>
       </div>
 

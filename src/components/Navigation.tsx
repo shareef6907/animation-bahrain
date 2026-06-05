@@ -1,25 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
-
-const navLinks = [
-  { href: "/services/2d-animation", label: "2D Animation" },
-  { href: "/services/3d-animation", label: "3D Animation" },
-  { href: "/services/brand-films", label: "Brand Films" },
-  { href: "/services/motion-graphics", label: "Motion Graphics" },
-  { href: "/services/explainer-videos", label: "Explainer Videos" },
-  { href: "/services/product-films", label: "Product Films" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/industries/f1-bahrain-grand-prix", label: "F1" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
-];
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -28,107 +15,62 @@ export default function Navigation() {
   }, []);
 
   return (
-    <>
-      <motion.header
-        initial={{ y: -100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled
-            ? "bg-abyss/90 backdrop-blur-xl border-b border-white/5"
-            : "bg-transparent"
-        }`}
-      >
-        <nav className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
-          {/* Column 1: logo, left-aligned */}
-          <div className="justify-self-start">
-            <Link href="/" className="flex items-center gap-3 group shrink-0">
-              <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
-                <span className="font-body text-abyss font-bold text-lg">A</span>
-              </div>
-              <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
-                Animation Bahrain
-              </span>
-            </Link>
-          </div>
+    <motion.header
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-abyss/90 backdrop-blur-xl border-b border-white/5"
+          : "bg-transparent"
+      }`}
+    >
+      <nav className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
+        {/* Column 1: logo, left-aligned */}
+        <div className="justify-self-start">
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="w-10 h-10 rounded-lg bg-amber flex items-center justify-center">
+              <span className="font-body text-abyss font-bold text-lg">A</span>
+            </div>
+            <span className="font-body text-fawn text-lg tracking-tight whitespace-nowrap">
+              Animation Bahrain
+            </span>
+          </Link>
+        </div>
 
-          {/* Column 2: nav links, perfectly centered */}
-          <ul className="hidden lg:flex items-center justify-center gap-8">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="font-body text-xs text-fawn-muted hover:text-amber transition-colors duration-300 tracking-wider uppercase"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        {/* Column 2: empty — three-column grid keeps spacing balanced */}
+        <div />
 
-          {/* Column 3: CTA, right-aligned */}
-          <div className="hidden lg:flex items-center justify-self-end gap-4">
-            <Link
-              href="/contact"
-              className="font-body text-xs bg-amber text-abyss px-5 py-2.5 rounded-lg font-medium tracking-wider uppercase hover:bg-amber-light transition-colors duration-300"
-            >
-              Start a Project
-            </Link>
-          </div>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 ml-auto"
-            aria-label="Toggle menu"
+        {/* Column 3: contact icons, right-aligned */}
+        <div className="hidden lg:flex items-center justify-self-end gap-4">
+          <a
+            href="mailto:ceo@bahrainnights.com"
+            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            aria-label="Email"
           >
-            <span className={`block w-6 h-0.5 bg-fawn transition-transform duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-fawn transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`} />
-            <span className={`block w-6 h-0.5 bg-fawn transition-transform duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
-          </button>
-        </nav>
-      </motion.header>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-abyss lg:hidden pt-24 px-6"
+            <Mail size={18} strokeWidth={1.5} />
+            <span className="font-body text-sm font-medium">ceo@bahrainnights.com</span>
+          </a>
+          <a
+            href="https://wa.me/97339007750"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            aria-label="WhatsApp"
           >
-            <ul className="flex flex-col gap-6">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
-                >
-                  <Link
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="font-editorial text-4xl text-fawn hover:text-amber transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
-              <li className="mt-8">
-                <Link
-                  href="/contact"
-                  onClick={() => setMenuOpen(false)}
-                  className="font-mono text-sm bg-amber text-abyss px-8 py-4 rounded-lg font-medium tracking-wider uppercase inline-block"
-                >
-                  Start a Project
-                </Link>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+            <MessageCircle size={18} strokeWidth={1.5} />
+            <span className="font-body text-sm font-medium">WhatsApp</span>
+          </a>
+          <a
+            href="tel:+97339007750"
+            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            aria-label="Phone"
+          >
+            <Phone size={18} strokeWidth={1.5} />
+            <span className="font-body text-sm font-medium">+973 3900 7750</span>
+          </a>
+        </div>
+      </nav>
+    </motion.header>
   );
 }
