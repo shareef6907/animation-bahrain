@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { ClientComponents } from "@/components/ClientComponents";
 
 const bebasNeue = Bebas_Neue({
@@ -183,7 +182,6 @@ export default function RootLayout({
         <ClientComponents>
           <Navigation />
           <main className="min-h-screen">{children}</main>
-          <Footer />
         </ClientComponents>
       </body>
     </html>
