@@ -6,10 +6,9 @@ const AUDIO_KEY = "animationbahrain_audio_muted";
 
 interface VerticalVideoSectionProps {
   src: string;
-  caption: string;
 }
 
-export function VerticalVideoSection({ src, caption }: VerticalVideoSectionProps) {
+export function VerticalVideoSection({ src }: VerticalVideoSectionProps) {
   const [isMuted, setIsMuted] = useState(true);
 
   useEffect(() => {
@@ -64,11 +63,7 @@ export function VerticalVideoSection({ src, caption }: VerticalVideoSectionProps
             )}
           </button>
         </div>
-        <div className="mt-6 text-center">
-          <p className="text-xs uppercase tracking-[0.2em] text-white/60">
-            {caption}
-          </p>
-        </div>
+
       </div>
     </section>
   );

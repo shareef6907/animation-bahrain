@@ -39,13 +39,6 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
       setIsTransitioning(true);
       setIsTextVisible(false);
 
-      if (nextVideoRef.current) {
-        nextVideoRef.current.src = videos[next].videoPath;
-        nextVideoRef.current.load();
-        nextVideoRef.current.muted = isMuted;
-        nextVideoRef.current.play().catch(() => {});
-      }
-
       setTimeout(() => {
         setCurrentIndex(next);
         setNextIndex(null);
@@ -55,7 +48,7 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
         progressStartRef.current = Date.now();
       }, FADE_DURATION_MS);
     },
-    [total, currentIndex, isMuted, videos]
+    [total, currentIndex]
   );
 
   const next = useCallback(() => goTo(currentIndex + 1), [currentIndex, goTo]);
@@ -76,13 +69,16 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
     if (nextVideoRef.current) nextVideoRef.current.muted = isMuted;
   }, [isMuted]);
 
-  // Set initial video element src after mount
+  // Belt-and-suspenders: ensure video plays on mount and on source change
   useEffect(() => {
-    if (videoRef.current && active.videoPath) {
-      videoRef.current.src = active.videoPath;
-      videoRef.current.load();
-      videoRef.current.play().catch(() => {});
-      progressStartRef.current = Date.now();
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {
+        // Autoplay blocked — try muted
+        if (videoRef.current) {
+          videoRef.current.muted = true;
+          videoRef.current.play().catch(() => {});
+        }
+      });
     }
   }, [active.videoPath]);
 
@@ -177,10 +173,14 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
     >
       {/* ── BACKGROUND VIDEOS ── */}
       <div className="absolute inset-0 z-0">
-        <video
+        {/* Active video — React src prop for reliable autoplay */}
+<video
+          key={active.videoPath}
           ref={videoRef}
-          muted={isMuted}
+          src={active.videoPath}
           autoPlay
+          muted={isMuted}
+          loop
           playsInline
           preload="auto"
           onEnded={handleVideoEnded}
@@ -193,10 +193,15 @@ export default function NetflixHero({ videos }: NetflixHeroProps) {
           }}
         />
 
+        {/* Next video — React src prop */}
         {nextIndex !== null && (
           <video
+            key={videos[nextIndex].videoPath}
             ref={nextVideoRef}
+            src={videos[nextIndex].videoPath}
+            autoPlay
             muted={isMuted}
+            loop
             playsInline
             preload="auto"
             className={`absolute inset-0 w-full h-full object-cover ${
