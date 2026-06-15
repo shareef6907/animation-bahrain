@@ -79,26 +79,16 @@ export default function HomePage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setFormStatus("sending");
-
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setFormStatus("sent");
-        setFormData({ name: "", email: "", company: "", service: "", message: "" });
-      } else {
-        setFormStatus("idle");
-        alert("Failed to send message. Please try again.");
-      }
-    } catch (error) {
-      setFormStatus("idle");
-      alert("Failed to send message. Please try again.");
-    }
+    
+    // Create mailto link with form data
+    const subject = encodeURIComponent(`${formData.service || "Animation Project"} - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\nEmail: ${formData.email}\nCompany: ${formData.company}\nService: ${formData.service}\n\nMessage:\n${formData.message}`
+    );
+    
+    window.location.href = `mailto:shareef@eventsbahrain.com?subject=${subject}&body=${body}`;
+    setFormStatus("sent");
+    setFormData({ name: "", email: "", company: "", service: "", message: "" });
   };
 
   return (
