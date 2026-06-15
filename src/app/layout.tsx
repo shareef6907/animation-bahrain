@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navigation from "@/components/Navigation";
-import Footer from "@/components/Footer";
 import { ClientComponents } from "@/components/ClientComponents";
 
 const editorial = Fraunces({
@@ -182,9 +180,7 @@ export default function RootLayout({
       </head>
       <body className="noise-overlay antialiased">
         <ClientComponents>
-          <Navigation />
           <main className="min-h-screen">{children}</main>
-          <Footer />
         </ClientComponents>
       </body>
     </html>
