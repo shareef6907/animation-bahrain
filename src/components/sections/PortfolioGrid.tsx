@@ -1,9 +1,70 @@
-import { AnimatedSection } from '@/components/ui/AnimatedSection'
-import { getPortfolioVideos } from '@/lib/portfolio'
+'use client'
 
-export default async function PortfolioGrid() {
-  const videos = await getPortfolioVideos()
-  
+import { useState, useRef } from 'react'
+import { Volume2, VolumeX } from 'lucide-react'
+import { AnimatedSection } from '@/components/ui/AnimatedSection'
+import type { PortfolioVideo } from '@/lib/portfolio'
+
+interface PortfolioGridProps {
+  videos: PortfolioVideo[]
+}
+
+function PortfolioVideoCard({ video }: { video: PortfolioVideo }) {
+  const [isMuted, setIsMuted] = useState(true)
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  const toggleMute = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsMuted(!isMuted)
+  }
+
+  // Use the has_audio from the database directly
+  const hasAudio = video.has_audio
+
+  return (
+    <div className="group">
+      <div className="relative aspect-video bg-black overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500">
+        <video
+          ref={videoRef}
+          src={`${process.env.NEXT_PUBLIC_VIDEO_BUCKET_URL}/${video.s3_filename}`}
+          autoPlay
+          muted={isMuted}
+          loop
+          playsInline
+          preload="metadata"
+          className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+        />
+        {hasAudio && (
+          <button
+            onClick={toggleMute}
+            className="absolute bottom-3 right-3 z-10 w-10 h-10 rounded-full bg-black/60 border border-white/30 hover:bg-black/80 flex items-center justify-center text-white"
+            aria-label={isMuted ? 'Unmute' : 'Mute'}
+          >
+            {isMuted ? <VolumeX size={18} /> : <Volume2 size={18} />}
+          </button>
+        )}
+      </div>
+      <div className="mt-5 flex items-baseline justify-between gap-4">
+        <h3 className="font-display text-2xl lg:text-3xl text-white tracking-tight">
+          {video.title}
+        </h3>
+        {video.category && (
+          <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/40 shrink-0">
+            {video.category}
+          </span>
+        )}
+      </div>
+      {video.description && (
+        <p className="text-white/60 text-sm mt-2 leading-relaxed max-w-md">
+          {video.description}
+        </p>
+      )}
+    </div>
+  )
+}
+
+export default function PortfolioGrid({ videos }: PortfolioGridProps) {
   return (
     <AnimatedSection>
       <section id="portfolio" className="w-full bg-black py-24 lg:py-32">
@@ -17,34 +78,7 @@ export default async function PortfolioGrid() {
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mt-16 lg:mt-20">
             {videos.map((video) => (
-              <div key={video.id} className="group">
-                <div className="relative aspect-video bg-black overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500">
-                  <video
-                    src={`${process.env.NEXT_PUBLIC_VIDEO_BUCKET_URL}/${video.s3_filename}`}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    className="absolute inset-0 w-full h-full object-contain transition-transform duration-700 group-hover:scale-[1.02]"
-                  />
-                </div>
-                <div className="mt-5 flex items-baseline justify-between gap-4">
-                  <h3 className="font-display text-2xl lg:text-3xl text-white tracking-tight">
-                    {video.title}
-                  </h3>
-                  {video.category && (
-                    <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/40 shrink-0">
-                      {video.category}
-                    </span>
-                  )}
-                </div>
-                {video.description && (
-                  <p className="text-white/60 text-sm mt-2 leading-relaxed max-w-md">
-                    {video.description}
-                  </p>
-                )}
-              </div>
+              <PortfolioVideoCard key={video.id} video={video} />
             ))}
           </div>
         </div>
