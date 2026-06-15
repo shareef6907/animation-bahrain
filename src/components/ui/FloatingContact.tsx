@@ -12,24 +12,27 @@ export function FloatingContact() {
         href="https://wa.me/97339007750"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Contact via WhatsApp"
-        className="group flex items-center justify-center rounded-full bg-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        aria-label="WhatsApp"
+        className="group flex items-center justify-center rounded-full bg-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        style={{ boxShadow: '0 0 12px #22c55e, 0 0 24px #22c55e40' }}
       >
-        <MessageCircle size={22} className="text-zinc-900" />
+        <MessageCircle size={22} style={{ color: '#22c55e' }} />
       </a>
       <a
         href="tel:+97339007750"
-        aria-label="Call us"
-        className="group flex items-center justify-center rounded-full bg-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        aria-label="Call"
+        className="group flex items-center justify-center rounded-full bg-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        style={{ boxShadow: '0 0 12px #06b6d4, 0 0 24px #06b6d440' }}
       >
-        <Phone size={22} className="text-zinc-900" />
+        <Phone size={22} style={{ color: '#06b6d4' }} />
       </a>
       <a
         href="mailto:ceo@bahrainnights.com"
-        aria-label="Email us"
-        className="group flex items-center justify-center rounded-full bg-white shadow-xl hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        aria-label="Email"
+        className="group flex items-center justify-center rounded-full bg-black shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 w-14 h-14"
+        style={{ boxShadow: '0 0 12px #d946ef, 0 0 24px #d946ef40' }}
       >
-        <Mail size={22} className="text-zinc-900" />
+        <Mail size={22} style={{ color: '#d946ef' }} />
       </a>
     </div>
   )

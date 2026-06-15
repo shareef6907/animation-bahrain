@@ -21,32 +21,29 @@ export function Navigation() {
       <nav className="max-w-7xl mx-auto px-6 py-4 grid grid-cols-3 items-center">
         <div />
         <div />
-        <div className="hidden lg:flex items-center justify-self-end gap-4">
+        <div className="hidden lg:flex items-center justify-end gap-4">
           <a
             href="mailto:ceo@bahrainnights.com"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="Email"
           >
-            <Mail size={18} />
-            <span className="font-body text-sm font-medium hidden md:block">ceo@bahrainnights.com</span>
+            <Mail size={18} className="text-white" />
           </a>
           <a
             href="https://wa.me/97339007750"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="WhatsApp"
           >
-            <MessageCircle size={18} />
-            <span className="font-body text-sm font-medium hidden md:block">WhatsApp</span>
+            <MessageCircle size={18} className="text-white" />
           </a>
           <a
             href="tel:+97339007750"
-            className="flex items-center gap-2 text-white/70 hover:text-white transition-colors duration-300"
+            className="flex items-center justify-center w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 transition"
             aria-label="Phone"
           >
-            <Phone size={18} />
-            <span className="font-body text-sm font-medium hidden md:block">+973 3900 7750</span>
+            <Phone size={18} className="text-white" />
           </a>
         </div>
       </nav>
