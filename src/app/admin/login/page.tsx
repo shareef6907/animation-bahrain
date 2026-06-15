@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Mail, Lock, AlertCircle } from 'lucide-react'
-import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
   const [email, setEmail] = useState('')
@@ -11,7 +10,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const router = useRouter()
-  const supabase = createClient()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -19,17 +17,18 @@ export default function LoginPage() {
     setError('')
 
     try {
-      const { data, error: authError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
       })
 
-      if (authError) {
-        setError(authError.message)
-      } else if (data.user) {
-        router.push('/admin')
+      const data = await res.json()
+
+      if (!res.ok || data.error) {
+        setError(data.error || 'Login failed')
       } else {
-        setError('No user returned')
+        router.push('/admin')
       }
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Connection failed')
