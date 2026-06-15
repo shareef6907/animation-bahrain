@@ -80,11 +80,25 @@ export default function HomePage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus("sending");
-    
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    setFormStatus("sent");
-    setFormData({ name: "", email: "", company: "", service: "", message: "" });
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setFormStatus("sent");
+        setFormData({ name: "", email: "", company: "", service: "", message: "" });
+      } else {
+        setFormStatus("idle");
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      setFormStatus("idle");
+      alert("Failed to send message. Please try again.");
+    }
   };
 
   return (
