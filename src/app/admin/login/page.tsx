@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { Mail, Lock } from 'lucide-react'
+import { Mail, Lock, AlertCircle } from 'lucide-react'
 import { createClient } from '@/lib/supabase/client'
 
 export default function LoginPage() {
@@ -18,14 +18,24 @@ export default function LoginPage() {
     setLoading(true)
     setError('')
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password })
+    try {
+      const { data, error: authError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
 
-    if (error) {
-      setError(error.message)
-      setLoading(false)
-    } else {
-      router.push('/admin')
+      if (authError) {
+        setError(authError.message)
+      } else if (data.user) {
+        router.push('/admin')
+      } else {
+        setError('No user returned')
+      }
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Connection failed')
     }
+
+    setLoading(false)
   }
 
   return (
@@ -64,7 +74,10 @@ export default function LoginPage() {
           </div>
           
           {error && (
-            <p className="text-red-500 text-sm">{error}</p>
+            <div className="flex items-center gap-2 text-red-500 text-sm">
+              <AlertCircle size={16} />
+              <span>{error}</span>
+            </div>
           )}
           
           <button
