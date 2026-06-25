@@ -56,7 +56,7 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
       <video
         key={current.id}
         ref={videoRef}
-        src={`${process.env.NEXT_PUBLIC_VIDEO_BUCKET_URL}/${current.video_path}`}
+        src={current.video_url}
         autoPlay
         muted={isMuted}
         playsInline

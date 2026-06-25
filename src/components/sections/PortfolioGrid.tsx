@@ -27,7 +27,7 @@ function PortfolioVideoCard({ video }: { video: PortfolioVideo }) {
       <div className="relative aspect-video bg-black overflow-hidden border border-white/10 hover:border-white/30 transition-all duration-500">
         <video
           ref={videoRef}
-          src={`${process.env.NEXT_PUBLIC_VIDEO_BUCKET_URL}/${video.s3_filename}`}
+          src={video.video_url}
           autoPlay
           muted={isMuted}
           loop
@@ -46,9 +46,11 @@ function PortfolioVideoCard({ video }: { video: PortfolioVideo }) {
         )}
       </div>
       <div className="mt-5 flex items-baseline justify-between gap-4">
-        <h3 className="font-display text-2xl lg:text-3xl text-white tracking-tight">
-          {video.title}
-        </h3>
+        {video.title && (
+          <h3 className="font-display text-2xl lg:text-3xl text-white tracking-tight">
+            {video.title}
+          </h3>
+        )}
         {video.category && (
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-white/40 shrink-0">
             {video.category}
