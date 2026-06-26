@@ -4,6 +4,7 @@ import { SalesPitch } from '@/components/sections/SalesPitch'
 import PortfolioGrid from '@/components/sections/PortfolioGrid'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { FloatingContact } from '@/components/ui/FloatingContact'
+import { Footer } from '@/components/Footer'
 import { getHeroVideos } from '@/lib/hero'
 import { getPortfolioVideos } from '@/lib/portfolio'
 
@@ -20,6 +21,7 @@ export default async function HomePage() {
       <SalesPitch />
       <PortfolioGrid videos={portfolioVideos} />
       <ClosingCTA />
+      <Footer />
       <FloatingContact />
     </main>
   )
