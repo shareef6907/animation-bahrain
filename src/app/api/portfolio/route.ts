@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     .from('animation_bahrain_portfolio')
     .select('*')
     .eq('is_active', true)
-    .order('created_at', { ascending: false })
+    .order('sort_order', { ascending: true })
 
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 })

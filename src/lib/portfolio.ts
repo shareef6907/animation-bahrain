@@ -17,7 +17,7 @@ export async function getPortfolioVideos(): Promise<PortfolioVideo[]> {
     .from('animation_bahrain_portfolio')
     .select('*')
     .eq('is_active', true)
-    .order('created_at', { ascending: false })
+    .order('sort_order', { ascending: true })
 
   if (error || !data || data.length === 0) {
     return []
