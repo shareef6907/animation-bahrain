@@ -33,6 +33,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
+      <head>
+        <link rel="preconnect" href="https://animation-bahrain-videos.s3.us-east-1.amazonaws.com" crossOrigin="anonymous" />
+      </head>
       <body className="font-body bg-black text-white antialiased">
         {children}
       </body>
