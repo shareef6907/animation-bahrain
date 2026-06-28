@@ -9,6 +9,7 @@ export type PortfolioVideo = {
   has_audio: boolean
   sort_order: number
   is_active: boolean
+  created_at?: string
 }
 
 export async function getPortfolioVideos(): Promise<PortfolioVideo[]> {
