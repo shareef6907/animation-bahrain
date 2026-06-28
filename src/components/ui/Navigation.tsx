@@ -43,20 +43,7 @@ export default function Navigation() {
               </span>
             </Link>
 
-            {/* Desktop pill nav */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="px-5 py-2 rounded-full font-body text-sm text-white/55 hover:text-white hover:bg-white/8 transition-all duration-300 tracking-wide"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-
-            {/* Desktop contact icons */}
+            {/* Desktop contact icons only — no text nav */}
             <div className="hidden lg:flex items-center gap-2">
               <a
                 href="https://wa.me/97339007750"

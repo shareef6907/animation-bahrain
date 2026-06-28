@@ -48,7 +48,7 @@ export default function SalesPitch() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          className="font-body text-base lg:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed"
+          className="font-body text-base lg:text-lg text-white/50 max-w-2xl mx-auto leading-relaxed my-12 md:my-20 text-center"
         >
           We create brand films and motion graphics that hold attention long
           enough to actually be remembered.

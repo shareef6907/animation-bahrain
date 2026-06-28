@@ -4,27 +4,33 @@ import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Volume2, VolumeX } from 'lucide-react'
 import type { HeroVideo } from '@/lib/hero'
+import { useAudio } from '@/contexts/AudioContext'
 
 interface HeroPlayerProps {
   items: HeroVideo[]
 }
 
 export function HeroPlayer({ items }: HeroPlayerProps) {
-  const [isMuted, setIsMuted] = useState(true)
   const [hasAudioTrack, setHasAudioTrack] = useState(false)
   const [fadeIn, setFadeIn] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
+  const { unmutedId, setUnmuted, muteAll } = useAudio()
+  const isUnmuted = unmutedId === 'hero'
 
   useEffect(() => {
     const saved = localStorage.getItem('ab_hero_muted')
-    if (saved !== null) setIsMuted(saved === 'true')
+    if (saved !== null) {
+      if (saved === 'false') setUnmuted('hero')
+    }
     setFadeIn(true)
-  }, [])
+  }, [setUnmuted])
 
   const toggleMute = () => {
-    const next = !isMuted
-    setIsMuted(next)
-    localStorage.setItem('ab_hero_muted', String(next))
+    if (isUnmuted) {
+      muteAll()
+    } else {
+      setUnmuted('hero')
+    }
   }
 
   useEffect(() => {
@@ -49,6 +55,13 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
     return () => video.removeEventListener('canplay', onCanPlay)
   }, [])
 
+  // Sync muted state with AudioContext
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+    video.muted = !isUnmuted
+  }, [isUnmuted])
+
   if (!items.length) return null
   const current = items[0]
 
@@ -64,7 +77,7 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
           ref={videoRef}
           src={current.video_url}
           autoPlay
-          muted={isMuted}
+          muted={!isUnmuted}
           playsInline
           loop
           preload="auto"
@@ -141,11 +154,11 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
       {hasAudioTrack && (
         <button
           onClick={toggleMute}
-          aria-label={isMuted ? 'Unmute' : 'Mute'}
+          aria-label={isUnmuted ? 'Mute' : 'Unmute'}
           className="absolute bottom-8 right-8 z-20 w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/50 hover:text-white hover:bg-white/10 transition-all duration-300"
           style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 1s' }}
         >
-          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
+          {isUnmuted ? <Volume2 size={16} /> : <VolumeX size={16} />}
         </button>
       )}
     </section>

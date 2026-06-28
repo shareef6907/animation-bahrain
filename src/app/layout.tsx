@@ -1,5 +1,6 @@
 import { Bebas_Neue, Inter } from 'next/font/google'
 import './globals.css'
+import { AudioProvider } from '@/contexts/AudioContext'
 
 const bebas = Bebas_Neue({
   subsets: ['latin'],
@@ -38,7 +39,9 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="font-body bg-[#050508] text-white antialiased">
-        {children}
+        <AudioProvider>
+          {children}
+        </AudioProvider>
       </body>
     </html>
   )

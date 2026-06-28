@@ -90,9 +90,9 @@ export default function BrandFilmsPage() {
       </section>
 
       {/* Features grid */}
-      <section className="py-32 lg:py-44">
+      <section className="py-24 md:py-32 lg:py-44">
         <div className="container-center">
-          <Reveal>
+          <div className="text-center mb-20">
             <h2
               className="font-display leading-tight text-center mb-6"
               style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
@@ -102,144 +102,130 @@ export default function BrandFilmsPage() {
             <p className="font-body text-sm text-white/40 text-center mb-16 max-w-xl mx-auto">
               Every project is handled with the same care we&apos;d give our own story.
             </p>
-          </Reveal>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             {features.map(({ emoji, title, desc }, i) => (
-              <Reveal key={title} delay={i * 0.07}>
-                <div
-                  className="p-7 rounded-2xl border border-white/7 hover:border-violet/25 transition-all duration-400"
-                  style={{ background: 'rgba(13,13,20,0.8)' }}
-                >
-                  <span className="text-3xl mb-5 block">{emoji}</span>
-                  <h3 className="font-display text-xl mb-3 text-white/90">{title}</h3>
-                  <p className="font-body text-sm text-white/40 leading-relaxed">{desc}</p>
-                </div>
-              </Reveal>
+              <div
+                key={title}
+                className="p-7 rounded-2xl border border-white/7 hover:border-violet/25 transition-all duration-400"
+                style={{ background: 'rgba(13,13,20,0.8)' }}
+              >
+                <span className="text-3xl mb-5 block">{emoji}</span>
+                <h3 className="font-display text-xl mb-3 text-white/90">{title}</h3>
+                <p className="font-body text-sm text-white/40 leading-relaxed">{desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Use cases + visual */}
-      <section className="py-32 border-t border-white/5">
+      <section className="py-24 md:py-32 border-t border-white/5">
         <div className="container-center">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
-              <div>
-                <h2
-                  className="font-display leading-tight mb-6"
-                  style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
-                >
-                  Ideal For
-                </h2>
-                <p className="font-body text-sm text-white/45 mb-10 leading-relaxed">
-                  Brand films transform how your audience perceives your company.
-                  From startups in Bahrain launching their identity to corporations
-                  across the GCC building emotional connections — our cinematic
-                  approach delivers unforgettable experiences.
-                </p>
-                <ul className="space-y-4">
-                  {useCases.map((uc) => (
-                    <li key={uc} className="flex items-start gap-3">
-                      <span
-                        className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
-                        style={{ background: 'linear-gradient(135deg, #8b5cf6, #ec4899)' }}
-                      />
-                      <span className="font-body text-sm text-white/60">{uc}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div
-                className="aspect-video rounded-2xl overflow-hidden flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.08))',
-                  border: '1px solid rgba(139,92,246,0.15)',
-                }}
+            <div>
+              <h2
+                className="font-display leading-tight mb-6"
+                style={{ fontSize: 'clamp(32px, 4vw, 56px)' }}
               >
-                <div className="text-center">
-                  <p className="text-5xl mb-4">🎬</p>
-                  <p className="font-body text-xs text-white/30 uppercase tracking-widest">
-                    Brand Film Preview
-                  </p>
-                  <p className="font-body text-xs text-white/20 mt-1">
-                    Full showreel at /portfolio
-                  </p>
-                </div>
+                Ideal For
+              </h2>
+              <p className="font-body text-sm text-white/45 mb-10 leading-relaxed">
+                Brand films transform how your audience perceives your company.
+                From startups in Bahrain launching their identity to corporations
+                across the GCC building emotional connections — our cinematic
+                approach delivers unforgettable experiences.
+              </p>
+              <ul className="space-y-4">
+                {useCases.map((uc) => (
+                  <li key={uc} className="flex items-start gap-3">
+                    <span
+                      className="w-2 h-2 rounded-full mt-2 flex-shrink-0"
+                      style={{ background: 'linear-gradient(135deg, #8b5cf6, #ec4899)' }}
+                    />
+                    <span className="font-body text-sm text-white/60">{uc}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div
+              className="aspect-video rounded-2xl overflow-hidden flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(135deg, rgba(139,92,246,0.1), rgba(236,72,153,0.08))',
+                border: '1px solid rgba(139,92,246,0.15)',
+              }}
+            >
+              <div className="text-center">
+                <p className="text-5xl mb-4">🎬</p>
+                <p className="font-body text-xs text-white/30 uppercase tracking-widest">
+                  Brand Film Preview
+                </p>
+                <p className="font-body text-xs text-white/20 mt-1">
+                  Full showreel at /portfolio
+                </p>
               </div>
-            </Reveal>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Process */}
-      <section className="py-32 border-t border-white/5">
+      <section className="py-24 md:py-32 border-t border-white/5">
         <div className="container-center">
-          <Reveal>
-            <h2
-              className="font-display leading-tight text-center mb-16"
-              style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
-            >
-              Our Process
-            </h2>
-          </Reveal>
+          <h2
+            className="font-display leading-tight text-center mb-16"
+            style={{ fontSize: 'clamp(32px, 4.5vw, 60px)' }}
+          >
+            Our Process
+          </h2>
           <div className="space-y-5">
-            {steps.map(({ num, title, desc }, i) => (
-              <Reveal key={num} delay={i * 0.07}>
-                <div
-                  className="flex items-start gap-8 p-7 rounded-2xl border border-white/7 hover:border-violet/20 transition-all duration-300"
-                  style={{ background: 'rgba(13,13,20,0.6)' }}
+            {steps.map(({ num, title, desc }) => (
+              <div
+                key={num}
+                className="flex items-start gap-8 p-7 rounded-2xl border border-white/7 hover:border-violet/20 transition-all duration-300"
+                style={{ background: 'rgba(13,13,20,0.6)' }}
+              >
+                <span
+                  className="font-display text-2xl w-14 flex-shrink-0"
+                  style={{ color: 'rgba(139,92,246,0.7)' }}
                 >
-                  <span
-                    className="font-display text-2xl w-14 flex-shrink-0"
-                    style={{ color: 'rgba(139,92,246,0.7)' }}
-                  >
-                    {num}
-                  </span>
-                  <div>
-                    <h3 className="font-display text-xl mb-2 text-white/80">{title}</h3>
-                    <p className="font-body text-sm text-white/40">{desc}</p>
-                  </div>
+                  {num}
+                </span>
+                <div>
+                  <h3 className="font-display text-xl mb-2 text-white/80">{title}</h3>
+                  <p className="font-body text-sm text-white/40">{desc}</p>
                 </div>
-              </Reveal>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-36 border-t border-white/5 relative overflow-hidden">
+      {/* CTA — centered with space */}
+      <section className="py-24 md:py-32 border-t border-white/5 relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.09) 0%, transparent 65%)' }}
         />
-        <div className="relative z-10 max-w-3xl mx-auto text-center px-6">
-          <Reveal>
-            <h2
-              className="font-display leading-tight mb-6"
-              style={{
-                fontSize: 'clamp(38px, 5vw, 72px)',
-                background: 'linear-gradient(90deg, #8b5cf6, #ec4899)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-              }}
-            >
-              Ready to Get Started?
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="font-body text-sm text-white/45 mb-10">
-              Free consultation, no commitment.
-            </p>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <Link href="/contact" className="btn-gradient">
-              📬 Book a Free Consultation
-            </Link>
-          </Reveal>
+        <div className="relative z-10 text-center container-center">
+          <h2
+            className="font-display leading-tight mb-6"
+            style={{
+              fontSize: 'clamp(38px, 5vw, 72px)',
+              background: 'linear-gradient(90deg, #8b5cf6, #ec4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            Ready to Get Started?
+          </h2>
+          <p className="font-body text-sm text-white/45 mb-10">
+            Free consultation, no commitment.
+          </p>
+          <Link href="/contact" className="btn-gradient">
+            📬 Book a Free Consultation
+          </Link>
         </div>
       </section>
 

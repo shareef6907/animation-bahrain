@@ -4,6 +4,7 @@ import { useState, useRef, useEffect, useCallback } from 'react'
 import { Volume2, VolumeX } from 'lucide-react'
 import type { PortfolioVideo } from '@/lib/portfolio'
 import { motion, useInView } from 'framer-motion'
+import { useAudio } from '@/contexts/AudioContext'
 
 interface PortfolioGridProps {
   videos: PortfolioVideo[]
@@ -12,7 +13,8 @@ interface PortfolioGridProps {
 const EAGER_COUNT = 3
 
 function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
-  const [isMuted, setIsMuted] = useState(true)
+  const { unmutedId, setUnmuted, muteAll } = useAudio()
+  const isUnmuted = unmutedId === video.id
   const [isLoaded, setIsLoaded] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const containerRef = useRef<HTMLDivElement>(null)
@@ -29,6 +31,7 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
     if (!isLoaded) setIsLoaded(true)
   }, [video.video_url, isLoaded])
 
+  // Lazy load + start loading before viewport (prefetch)
   useEffect(() => {
     if (isEager) {
       loadVideo()
@@ -36,25 +39,28 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
     }
     const el = containerRef.current
     if (!el) return
-    const observer = new IntersectionObserver(
+    // Prefetch before visible so playback starts instantly when in view
+    const prefetchObserver = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
           loadVideo()
-          observer.disconnect()
+          prefetchObserver.disconnect()
         }
       },
-      { rootMargin: '400px 0px' }
+      { rootMargin: '2000px 0px' }
     )
-    observer.observe(el)
-    return () => observer.disconnect()
+    prefetchObserver.observe(el)
+    return () => prefetchObserver.disconnect()
   }, [isEager, loadVideo])
 
-  // Play/pause based on viewport
+  // Play/pause based on viewport — ALL videos autoplay when in view
   useEffect(() => {
-    if (!isEager) return
     const videoEl = videoRef.current
     if (!videoEl) return
-    const observer = new IntersectionObserver(
+    const el = containerRef.current
+    if (!el) return
+
+    const playObserver = new IntersectionObserver(
       (entries) => {
         if (!entries[0].isIntersecting) {
           videoEl.pause()
@@ -62,11 +68,28 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
           videoEl.play().catch(() => {})
         }
       },
-      { rootMargin: '600px 0px' }
+      { rootMargin: '0px 0px' }
     )
-    observer.observe(videoEl)
-    return () => observer.disconnect()
-  }, [isEager])
+    playObserver.observe(el)
+    return () => playObserver.disconnect()
+  }, [isLoaded])
+
+  // Sync muted state with AudioContext
+  useEffect(() => {
+    const videoEl = videoRef.current
+    if (!videoEl) return
+    videoEl.muted = !isUnmuted
+  }, [isUnmuted])
+
+  const handleUnmute = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (isUnmuted) {
+      muteAll()
+    } else {
+      setUnmuted(video.id)
+    }
+  }
 
   return (
     <div ref={containerRef} className="w-full">
@@ -75,8 +98,8 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
         <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
           <video
             ref={videoRef}
-            autoPlay={isEager}
-            muted={isMuted}
+            autoPlay
+            muted={!isUnmuted}
             loop
             playsInline
             preload={isEager ? 'metadata' : 'none'}
@@ -87,11 +110,11 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
           {/* Mute toggle */}
           {hasAudio && isLoaded && (
             <button
-              onClick={(e) => { e.preventDefault(); setIsMuted(!isMuted) }}
-              aria-label={isMuted ? 'Unmute' : 'Mute'}
+              onClick={handleUnmute}
+              aria-label={isUnmuted ? 'Mute' : 'Unmute'}
               className="absolute bottom-4 right-4 z-10 w-9 h-9 flex items-center justify-center rounded-full bg-black/60 backdrop-blur-sm border border-white/20 text-white/70 hover:text-white hover:bg-black/80 transition-all duration-300"
             >
-              {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+              {isUnmuted ? <Volume2 size={14} /> : <VolumeX size={14} />}
             </button>
           )}
         </div>

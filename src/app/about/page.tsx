@@ -1,242 +1,185 @@
-import { Metadata } from "next";
-import Reveal from "@/components/Reveal";
-import MagneticButton from "@/components/MagneticButton";
+import Navigation from '@/components/ui/Navigation'
+import Particles from '@/components/ui/Particles'
+import { FloatingContact } from '@/components/ui/FloatingContact'
+import { Footer } from '@/components/Footer'
+import Link from 'next/link'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "About | Animation Bahrain",
-  description:
-    "Learn about Bahrain's premier cinematic animation studio. Our story, our approach, our team.",
-};
-
-const values = [
-  {
-    title: "Story First",
-    description:
-      "Every frame serves the narrative. We don't animate unless it moves the story forward.",
-    icon: (
-      <svg
-        className="w-6 h-6 text-abyss"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M7 4V2m0 2v2m0-2H4m3 0h3M7 20v-2m0 2v2m0-2H4m3 0h3m10-4V8l-4-4-4 4v12m8-4V6l-4 4-4-4v8"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "GCC Speed",
-    description:
-      "Productions tuned for regional timelines without sacrificing global quality standards.",
-    icon: (
-      <svg
-        className="w-6 h-6 text-abyss"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-        />
-      </svg>
-    ),
-  },
-  {
-    title: "Bahrain Roots",
-    description:
-      "Built in Manama, serving the entire Gulf. We understand regional culture and business practices.",
-    icon: (
-      <svg
-        className="w-6 h-6 text-abyss"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-        />
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-        />
-      </svg>
-    ),
-  },
-];
-
-const capabilities = [
-  {
-    title: "Cinematic Direction",
-    description:
-      "Every project begins with a director's vision. We approach animation as filmmaking, not asset production.",
-  },
-  {
-    title: "Modern Pipeline",
-    description:
-      "A contemporary production workflow built for speed and quality. From concept to delivery without the bloat.",
-  },
-  {
-    title: "Bahrain-Based Team",
-    description:
-      "Local creatives who understand the Gulf market, supported by international production partners.",
-  },
-];
+  title: 'About | Animation Bahrain',
+  description: 'We are professional filmmakers based in Bahrain, crafting films that don\'t just get watched — they get remembered.',
+}
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 bg-abyss">
-        <Reveal>
-          <h1
-            className="font-editorial text-6xl md:text-8xl text-fawn mb-6 text-center"
-            style={{ fontWeight: 400 }}
-          >
-            We Are Animation Bahrain
-          </h1>
-        </Reveal>
-        <Reveal delay={0.1}>
-          <p className="font-mono text-sm text-fawn-muted uppercase tracking-widest">
-            Cinematic Animation. Built in Bahrain. Made for the World.
+    <main className="bg-[#050508] min-h-screen">
+      <Particles />
+      <Navigation />
+
+      {/* Hero */}
+      <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-24">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.09) 0%, transparent 65%)' }}
+        />
+        <div className="relative z-10 text-center max-w-5xl mx-auto px-6 py-40">
+          <p className="font-body text-xs uppercase tracking-[0.45em] text-white/30 mb-8">
+            🎬 Who We Are
           </p>
-        </Reveal>
+          <h1
+            className="font-display leading-tight mb-8"
+            style={{
+              fontSize: 'clamp(52px, 8vw, 108px)',
+              background: 'linear-gradient(90deg, #8b5cf6, #a855f7 35%, #ec4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            About Us
+          </h1>
+          <p className="font-body text-base lg:text-lg text-white/55 max-w-2xl mx-auto leading-relaxed">
+            Professional filmmakers based in Bahrain, crafting films that don&apos;t just get watched — they get remembered.
+          </p>
+        </div>
       </section>
 
       {/* Story Section */}
-      <section className="py-32 px-6 bg-night">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <Reveal>
-              <div>
-                <h2
-                  className="font-editorial text-4xl md:text-5xl text-fawn mb-8"
-                  style={{ fontWeight: 400 }}
+      <section className="py-32 lg:py-44">
+        <div className="container-center">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="font-body text-xs uppercase tracking-[0.45em] text-white/30 mb-10">
+              Our Story
+            </p>
+            <div className="space-y-8 text-left">
+              {[
+                "We are professional filmmakers based in Bahrain, crafting films that don't just get watched — they get remembered. From cinematic commercials and TV advertisements to photorealistic 3D animation, we bring stories to life with the precision of seasoned filmmakers and the boundless possibility of modern animation.",
+                "Where the camera reaches its limit, our animation begins — blending real production craft with 3D worlds that feel utterly real.",
+                "With over 20 years of experience in film production, we understand that great content is only half the equation — delivering it on time is the other. Most projects are ready in just 2–3 days, and when the moment demands it, we deliver same-day.",
+                "Animation Bahrain is a creative department of Bahrain Nights. We don't just deliver content — we deliver results, and we stand behind every frame with a commitment to client satisfaction.",
+              ].map((para, i) => (
+                <p
+                  key={i}
+                  className="font-body text-base lg:text-lg text-white/55 leading-relaxed"
                 >
-                  Our Story
-                </h2>
-                <div className="space-y-6 text-fawn-muted font-mono text-sm leading-relaxed">
-                  <p>
-                    Animation Bahrain was founded on a simple premise: the GCC
-                    market deserves cinematic-quality animation without the
-                    traditional production timelines. We built our studio with a
-                    filmmaker&apos;s mindset — story drives every decision, from
-                    first frame to final render.
-                  </p>
-                  <p>
-                    Our roots are in live-action film and event production. We
-                    brought that discipline into animation: pre-visualisation
-                    before we animate, editorial thinking before we render, and a
-                    refusal to produce content that doesn&apos;t serve the story
-                    it&apos;s meant to tell.
-                  </p>
-                  <p>
-                    Today, we serve F1 sponsors, telecoms, banks, and government
-                    entities across the GCC — delivering broadcast-quality
-                    animation that moves audiences the way cinema does. Not
-                    because we animate, but because we know how to tell stories.
-                  </p>
-                </div>
-              </div>
-            </Reveal>
-            <Reveal delay={0.2}>
-              <div className="aspect-square rounded-2xl bg-surface flex items-center justify-center">
-                <span className="font-mono text-xs text-fawn-muted uppercase tracking-wider">
-                  Team Photo
-                </span>
-              </div>
-            </Reveal>
+                  {para}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-32 px-6 bg-abyss">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
-            <h2
-              className="font-editorial text-4xl md:text-5xl text-fawn mb-16 text-center"
-              style={{ fontWeight: 400 }}
-            >
+      {/* Values / What We Stand For */}
+      <section className="py-32 lg:py-44 border-t border-white/5">
+        <div className="container-center">
+          <div className="text-center mb-20">
+            <p className="font-body text-xs uppercase tracking-[0.45em] text-white/30 mb-6">
               What We Stand For
+            </p>
+            <h2
+              className="font-display leading-tight"
+              style={{
+                fontSize: 'clamp(36px, 5vw, 72px)',
+                background: 'linear-gradient(90deg, #8b5cf6, #ec4899)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
+            >
+              Precision + Possibility
             </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {values.map((value, index) => (
-              <Reveal key={index} delay={index * 0.1}>
-                <div className="text-center">
-                  <div className="w-16 h-16 rounded-full bg-amber flex items-center justify-center mx-auto mb-6">
-                    {value.icon}
-                  </div>
-                  <h3 className="font-editorial text-2xl text-fawn mb-4">
-                    {value.title}
-                  </h3>
-                  <p className="font-mono text-sm text-fawn-muted leading-relaxed">
-                    {value.description}
-                  </p>
-                </div>
-              </Reveal>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            {[
+              { emoji: '🎬', title: 'Cinematic Discipline', desc: 'Pre-visualisation before we animate. Editorial thinking before we render. Every frame serves the story.' },
+              { emoji: '⚡', title: 'GCC Speed', desc: 'Most projects delivered in 2–3 days. When the moment demands it, we deliver same-day — without sacrificing quality.' },
+              { emoji: '🌏', title: 'Regional Expertise', desc: 'Built in Manama, serving the entire Gulf. We understand regional culture, business practices, and what resonates across the GCC.' },
+            ].map(({ emoji, title, desc }) => (
+              <div
+                key={title}
+                className="p-8 rounded-2xl border border-white/7 text-center"
+                style={{ background: 'rgba(13,13,20,0.8)' }}
+              >
+                <span className="text-4xl mb-5 block">{emoji}</span>
+                <h3 className="font-display text-xl mb-3 text-white/80">{title}</h3>
+                <p className="font-body text-sm text-white/40 leading-relaxed">{desc}</p>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Capabilities Section */}
-      <section className="py-32 px-6 bg-night">
-        <div className="max-w-7xl mx-auto">
-          <Reveal>
+      {/* Bahrain Nights connection */}
+      <section className="py-32 lg:py-44 border-t border-white/5">
+        <div className="container-center">
+          <div className="max-w-3xl mx-auto text-center">
+            <p className="font-body text-xs uppercase tracking-[0.45em] text-white/30 mb-8">
+              Our House
+            </p>
             <h2
-              className="font-editorial text-4xl md:text-5xl text-fawn mb-16 text-center"
-              style={{ fontWeight: 400 }}
+              className="font-display leading-tight mb-8"
+              style={{
+                fontSize: 'clamp(36px, 5vw, 72px)',
+                background: 'linear-gradient(90deg, #8b5cf6, #ec4899)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+              }}
             >
-              Our Approach
+              A Creative Department of Bahrain Nights
             </h2>
-          </Reveal>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {capabilities.map((cap, index) => (
-              <Reveal key={index} delay={index * 0.1}>
-                <div className="bg-surface rounded-2xl p-8">
-                  <h3 className="font-editorial text-xl text-fawn mb-4">
-                    {cap.title}
-                  </h3>
-                  <p className="font-mono text-sm text-fawn-muted leading-relaxed">
-                    {cap.description}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+            <p className="font-body text-base lg:text-lg text-white/55 leading-relaxed mb-6">
+              Animation Bahrain is the motion graphics and brand film division of Bahrain Nights — the production company behind some of the Gulf&apos;s most recognisable commercial content. Bahrain Nights brings 20+ years of film and event production experience; we bring that same standard to animation.
+            </p>
+            <p className="font-body text-base lg:text-lg text-white/55 leading-relaxed">
+              The same rigour. The same urgency. The same commitment to delivering work that earns attention — and keeps it.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-32 px-6 bg-abyss">
-        <div className="max-w-4xl mx-auto text-center">
-          <Reveal>
-            <h2
-              className="font-editorial text-4xl md:text-5xl text-fawn mb-8"
-              style={{ fontWeight: 400 }}
-            >
-              Ready to Create?
-            </h2>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <MagneticButton href="/contact">Get in Touch</MagneticButton>
-          </Reveal>
+      {/* CTA */}
+      <section className="py-36 lg:py-52 border-t border-white/5 relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{ background: 'radial-gradient(ellipse at 50% 50%, rgba(139,92,246,0.09) 0%, transparent 65%)' }}
+        />
+        <div className="relative z-10 text-center container-center">
+          <p className="font-body text-xs uppercase tracking-[0.45em] text-white/30 mb-8">
+            Ready to Start?
+          </p>
+          <h2
+            className="font-display leading-tight mb-10"
+            style={{
+              fontSize: 'clamp(38px, 5.5vw, 84px)',
+              background: 'linear-gradient(90deg, #8b5cf6, #a855f7 40%, #ec4899)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+            }}
+          >
+            Let&apos;s make your brand{' '}
+            <em style={{ fontStyle: 'italic', background: 'linear-gradient(90deg, #ec4899, #f472b6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+              unmissable.
+            </em>
+          </h2>
+          <p className="font-body text-base text-white/50 mb-12 max-w-xl mx-auto">
+            We take on a limited number of projects each quarter. Reach out and let&apos;s see if we&apos;re the right fit.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link href="/contact" className="btn-gradient">
+              📬 Get in Touch
+            </Link>
+            <Link href="/portfolio" className="btn-ghost">
+              See Our Work
+            </Link>
+          </div>
         </div>
       </section>
-    </div>
-  );
+
+      <Footer />
+      <FloatingContact />
+    </main>
+  )
 }
