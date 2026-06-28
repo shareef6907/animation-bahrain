@@ -20,11 +20,11 @@ export async function getHeroVideos(): Promise<HeroVideo[]> {
     .order('position', { ascending: true })
 
   if (error || !data?.length) {
-    // Fallback: use S3-hosted hero
+    // Fallback: use the Vercel-deployed public video (auto-excluded from repo by .gitignore)
     return [{
       id: 'header-compilation',
       position: 0,
-      video_url: 'https://animation-bahrain-videos.s3.us-east-1.amazonaws.com/Final%20Animation%20header.mp4',
+      video_url: '/Final Animation header.mp4',
       title: null,
       category: null,
       description: null,
