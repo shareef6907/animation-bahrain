@@ -6,21 +6,35 @@
 }
 
 :root {
-  --background: #000000;
-  --foreground: #fafafa;
-  /* Black Room accent — rationed to 2-3 uses total */
-  --accent: #8b5cf6;
-  --accent-foreground: #fafafa;
-  --muted: #333333;
-  --muted-foreground: #666666;
+  /* Lively Premium — violet→magenta on deep near-black */
+  --bg: #050508;
+  --surface: #0d0d14;
+  --surface-2: #14141f;
+  --border: rgba(255, 255, 255, 0.07);
+
+  /* Accent spectrum: violet → purple → magenta */
+  --violet: #8b5cf6;
+  --purple: #a855f7;
+  --magenta: #ec4899;
+  --pink: #f472b6;
+
+  /* Text */
+  --text: #f0f0ff;
+  --text-muted: rgba(240, 240, 255, 0.45);
+  --text-dim: rgba(240, 240, 255, 0.25);
+
+  /* Glows */
+  --glow-violet: 0 0 20px rgba(139, 92, 246, 0.35);
+  --glow-magenta: 0 0 20px rgba(236, 72, 153, 0.35);
+  --glow-purple: 0 0 20px rgba(168, 85, 247, 0.35);
+
+  /* Fonts */
+  --font-display: var(--font-display), Bebas Neue, Impact, sans-serif;
+  --font-body: var(--font-body), Inter, system-ui, sans-serif;
 }
 
-/* Reset */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* ─── Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
   scroll-behavior: smooth;
@@ -29,25 +43,102 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
-/* Minimal scrollbar */
+/* ─── Scrollbar ──────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--surface-2); border-radius: 2px; }
 
-/* Selection */
-::selection {
-  background: #8b5cf6;
-  color: #fff;
-}
+/* ─── Selection ─────────────────────────────────────────── */
+::selection { background: rgba(139, 92, 246, 0.35); color: #fff; }
 
-/* Remove default focus rings — custom focus instead */
+/* ─── Focus ──────────────────────────────────────────────── */
 :focus-visible {
   outline: 1px solid rgba(139, 92, 246, 0.6);
   outline-offset: 3px;
+}
+
+/* ─── Gradient text utility ──────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(90deg, #8b5cf6, #a855f7, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Gradient pill button ──────────────────────────────── */
+.btn-gradient {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #fff;
+  background: linear-gradient(135deg, #8b5cf6, #a855f7 50%, #ec4899);
+  background-size: 200% 200%;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.35);
+  transition: box-shadow 0.3s ease, transform 0.2s ease, background-position 0.4s ease;
+  cursor: pointer;
+  border: none;
+}
+.btn-gradient:hover {
+  background-position: right center;
+  box-shadow: 0 0 32px rgba(139, 92, 246, 0.55), 0 0 8px rgba(236, 72, 153, 0.3);
+  transform: translateY(-1px);
+}
+.btn-gradient:active { transform: translateY(0); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.btn-ghost:hover {
+  color: var(--text);
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.05);
+}
+
+/* ─── Glass card ────────────────────────────────────────── */
+.glass {
+  background: rgba(13, 13, 20, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border);
+}
+
+/* ─── Max-width container ────────────────────────────────── */
+.container-center {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }

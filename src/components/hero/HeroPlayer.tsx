@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import { Volume2, VolumeX } from 'lucide-react'
 import type { HeroVideo } from '@/lib/hero'
 
@@ -9,7 +10,6 @@ interface HeroPlayerProps {
 }
 
 export function HeroPlayer({ items }: HeroPlayerProps) {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const [hasAudioTrack, setHasAudioTrack] = useState(false)
   const [fadeIn, setFadeIn] = useState(false)
@@ -18,48 +18,43 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
   useEffect(() => {
     const saved = localStorage.getItem('ab_hero_muted')
     if (saved !== null) setIsMuted(saved === 'true')
+    setFadeIn(true)
   }, [])
 
-  useEffect(() => {
-    setFadeIn(false)
-    const t = setTimeout(() => setFadeIn(true), 100)
-    return () => clearTimeout(t)
-  }, [currentIndex])
-
   const toggleMute = () => {
-    const newMuted = !isMuted
-    setIsMuted(newMuted)
-    localStorage.setItem('ab_hero_muted', String(newMuted))
+    const next = !isMuted
+    setIsMuted(next)
+    localStorage.setItem('ab_hero_muted', String(next))
   }
 
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
-    video.play().catch(() => {})
-  }, [currentIndex])
-
-  useEffect(() => {
-    const video = videoRef.current
-    if (!video) return
-    const checkAudio = () => {
-      const v = video as unknown as { mozHasAudio?: boolean; webkitAudioDecodedByteCount?: number; audioTracks?: { length: number } }
-      const hasAudio = Boolean(v?.mozHasAudio || v?.webkitAudioDecodedByteCount || (v?.audioTracks?.length && v.audioTracks.length > 0))
-      setHasAudioTrack(hasAudio)
+    const onCanPlay = () => {
+      try {
+        const v = video as unknown as {
+          mozHasAudio?: boolean
+          webkitAudioDecodedByteCount?: number
+          audioTracks?: { length: number }
+        }
+        const has = Boolean(
+          v?.mozHasAudio ||
+            v?.webkitAudioDecodedByteCount ||
+            (v?.audioTracks?.length && v.audioTracks.length > 0)
+        )
+        setHasAudioTrack(has)
+      } catch {}
     }
-    video.addEventListener('canplay', checkAudio)
-    return () => video.removeEventListener('canplay', checkAudio)
-  }, [currentIndex])
-
-  const handleEnded = () => {
-    setCurrentIndex((i) => (i + 1) % items.length)
-  }
+    video.addEventListener('canplay', onCanPlay)
+    return () => video.removeEventListener('canplay', onCanPlay)
+  }, [])
 
   if (!items.length) return null
-  const current = items[currentIndex]
+  const current = items[0]
 
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden">
-      {/* Film */}
+      {/* Hero video */}
       <div
         className="absolute inset-0 transition-opacity duration-1000"
         style={{ opacity: fadeIn ? 1 : 0 }}
@@ -71,46 +66,86 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
           autoPlay
           muted={isMuted}
           playsInline
+          loop
           preload="auto"
-          onEnded={handleEnded}
           className="absolute inset-0 w-full h-full object-cover"
         />
       </div>
 
-      {/* Bottom fade to black — lets film breathe */}
+      {/* Gradient overlays */}
       <div
-        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 50%, transparent 100%)',
+          background:
+            'linear-gradient(to bottom, rgba(5,5,8,0.4) 0%, rgba(5,5,8,0.1) 40%, rgba(5,5,8,0.7) 80%, rgba(5,5,8,0.96) 100%)',
+        }}
+      />
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            'radial-gradient(ellipse at 50% 60%, rgba(139,92,246,0.1) 0%, transparent 65%)',
         }}
       />
 
-      {/* Minimal headline — only this, no title/category/description */}
-      <div className="absolute inset-0 flex flex-col items-start justify-end z-10 pb-20 px-8 lg:pb-28 lg:px-20">
+      {/* Content — centered */}
+      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6">
+        {/* Eyebrow */}
         <p
-          className="font-mono text-xs uppercase tracking-[0.4em] text-white/40 mb-6"
-          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.3s' }}
+          className="font-body text-xs uppercase tracking-[0.45em] text-white/40 mb-8"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.2s' }}
         >
-          Animation Bahrain
+          🎬 Cinematic Animation Studio
         </p>
-        <h2
-          className="font-display text-white leading-none tracking-tight max-w-4xl"
-          style={{ fontSize: 'clamp(36px, 6vw, 88px)', opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.5s' }}
+
+        {/* Headline — gradient text, centered */}
+        <h1
+          className="font-display leading-none tracking-wide mb-8 max-w-5xl"
+          style={{
+            fontSize: 'clamp(48px, 8vw, 112px)',
+            opacity: fadeIn ? 1 : 0,
+            transition: 'opacity 0.9s ease 0.4s',
+            background: 'linear-gradient(90deg, #8b5cf6, #a855f7 35%, #ec4899 65%, #f472b6)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            backgroundClip: 'text',
+          }}
         >
-          We don&apos;t illustrate brands.{' '}
-          <em className="not-italic text-violet-400">We direct them.</em>
-        </h2>
+          We Film Your Story
+        </h1>
+
+        {/* Sub-headline */}
+        <p
+          className="font-body text-base lg:text-lg text-white/55 max-w-2xl mb-12 leading-relaxed"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.65s' }}
+        >
+          Premium brand films and motion graphics for the brands that
+          refuse to be forgettable.
+        </p>
+
+        {/* CTA pills */}
+        <div
+          className="flex flex-wrap gap-4 justify-center"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.8s' }}
+        >
+          <Link href="/portfolio" className="btn-gradient">
+            🎥 View Our Work
+          </Link>
+          <Link href="/contact" className="btn-ghost">
+            Get In Touch
+          </Link>
+        </div>
       </div>
 
-      {/* Mute toggle — almost invisible, bottom-right */}
-      {(hasAudioTrack || current.has_audio) && (
+      {/* Mute toggle — bottom right */}
+      {hasAudioTrack && (
         <button
           onClick={toggleMute}
           aria-label={isMuted ? 'Unmute' : 'Mute'}
-          className="absolute bottom-8 right-8 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/15 text-white/60 hover:text-white transition-all duration-300"
-          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.8s' }}
+          className="absolute bottom-8 right-8 z-20 w-10 h-10 flex items-center justify-center rounded-full border border-white/15 text-white/50 hover:text-white hover:bg-white/10 transition-all duration-300"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 1s' }}
         >
-          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
+          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>
       )}
     </section>

@@ -18,7 +18,7 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL('https://animationbahrain.com'),
   title: 'Animation Bahrain | Cinematic Animation Studio',
-  description: 'Cinematic brand films for premium clients across the GCC.',
+  description: 'Premium brand films and motion graphics for the GCC.',
   openGraph: {
     type: 'website',
     url: '/',
@@ -37,7 +37,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://animation-bahrain-videos.s3.us-east-1.amazonaws.com" crossOrigin="anonymous" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
-      <body className="font-body bg-black text-white antialiased">
+      <body className="font-body bg-[#050508] text-white antialiased">
         {children}
       </body>
     </html>

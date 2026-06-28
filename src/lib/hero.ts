@@ -9,8 +9,8 @@ export type HeroVideo = {
   is_active: boolean
 }
 
-// Direct S3 URL — no Supabase env vars needed, guaranteed to work
-const HERO_VIDEO_URL = 'https://animation-bahrain-videos.s3.us-east-1.amazonaws.com/Final%20Animation%20header.mp4'
+// Vercel-hosted hero video — committed to /public, URL-safe name
+const HERO_VIDEO_URL = '/hero.mp4'
 
 export async function getHeroVideos(): Promise<HeroVideo[]> {
   return [{

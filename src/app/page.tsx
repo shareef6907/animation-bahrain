@@ -1,17 +1,17 @@
 import Navigation from '@/components/ui/Navigation'
 import { HeroPlayer } from '@/components/hero/HeroPlayer'
-import { SalesPitch } from '@/components/sections/SalesPitch'
+import SalesPitch from '@/components/sections/SalesPitch'
 import PortfolioGrid from '@/components/sections/PortfolioGrid'
 import { ClosingCTA } from '@/components/sections/ClosingCTA'
 import { Footer } from '@/components/Footer'
 import { FloatingContact } from '@/components/ui/FloatingContact'
-import { ClientComponents } from '@/components/ClientComponents'
+import Particles from '@/components/ui/Particles'
 import { getHeroVideos } from '@/lib/hero'
 import type { PortfolioVideo } from '@/lib/portfolio'
 
 export const dynamic = 'force-dynamic'
 
-// Fallback portfolio data — newest-first order: BMW, Commercial1, Cream, then down to Fintech last
+// Hardcoded fallback — newest-first: BMW, Commercial1, ..., Fintech last
 const FALLBACK_PORTFOLIO: PortfolioVideo[] = [
   { id: '5f6278f5-4bd9-4e7b-b49b-039dc7e27369', title: '', category: '', description: '', video_url: 'https://animation-bahrain-videos.s3.us-east-1.amazonaws.com/BMW%20New%20animation.mp4', has_audio: true, sort_order: 17, is_active: true, created_at: '2026-06-27T16:52:57.547244+00:00' },
   { id: '9fa58dbc-4b42-4d80-bd65-bf64fa1af658', title: '', category: '', description: '', video_url: 'https://animation-bahrain-videos.s3.us-east-1.amazonaws.com/Commercial%201.mp4', has_audio: true, sort_order: 16, is_active: true, created_at: '2026-06-25T20:28:50.129219+00:00' },
@@ -33,7 +33,6 @@ const FALLBACK_PORTFOLIO: PortfolioVideo[] = [
 ]
 
 async function getPortfolioVideos(): Promise<PortfolioVideo[]> {
-  // Try the API route first (works reliably in all environments)
   try {
     const baseUrl = process.env.VERCEL_URL
       ? `https://${process.env.VERCEL_URL}`
@@ -44,7 +43,6 @@ async function getPortfolioVideos(): Promise<PortfolioVideo[]> {
       if (data.length > 0) return data
     }
   } catch {}
-  // Fallback to hardcoded data
   return FALLBACK_PORTFOLIO
 }
 
@@ -55,16 +53,15 @@ export default async function HomePage() {
   ])
 
   return (
-    <ClientComponents>
-      <main className="bg-black">
-        <Navigation />
-        <HeroPlayer items={heroVideos} />
-        <SalesPitch />
-        <PortfolioGrid videos={portfolioVideos} />
-        <ClosingCTA />
-        <Footer />
-        <FloatingContact />
-      </main>
-    </ClientComponents>
+    <main className="bg-[#050508]">
+      <Particles />
+      <Navigation />
+      <HeroPlayer items={heroVideos} />
+      <SalesPitch />
+      <PortfolioGrid videos={portfolioVideos} />
+      <ClosingCTA />
+      <Footer />
+      <FloatingContact />
+    </main>
   )
 }
