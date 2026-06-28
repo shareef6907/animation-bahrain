@@ -1,5 +1,3 @@
-import { createClient } from './supabase/server'
-
 export type HeroVideo = {
   id: string
   position: number
@@ -11,27 +9,18 @@ export type HeroVideo = {
   is_active: boolean
 }
 
+// Direct S3 URL — no Supabase env vars needed, guaranteed to work
+const HERO_VIDEO_URL = 'https://animation-bahrain-videos.s3.us-east-1.amazonaws.com/Final%20Animation%20header.mp4'
+
 export async function getHeroVideos(): Promise<HeroVideo[]> {
-  const supabase = await createClient()
-  const { data, error } = await supabase
-    .from('animation_bahrain_hero_videos')
-    .select('*')
-    .eq('is_active', true)
-    .order('position', { ascending: true })
-
-  if (error || !data?.length) {
-    // Fallback: use the Vercel-deployed public video (auto-excluded from repo by .gitignore)
-    return [{
-      id: 'header-compilation',
-      position: 0,
-      video_url: '/Final Animation header.mp4',
-      title: null,
-      category: null,
-      description: null,
-      has_audio: true,
-      is_active: true,
-    }]
-  }
-
-  return data
+  return [{
+    id: 'header-compilation',
+    position: 0,
+    video_url: HERO_VIDEO_URL,
+    title: null,
+    category: null,
+    description: null,
+    has_audio: true,
+    is_active: true,
+  }]
 }
