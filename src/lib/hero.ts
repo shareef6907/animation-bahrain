@@ -17,7 +17,7 @@ export async function getHeroVideos(): Promise<HeroVideo[]> {
     id: 'header-compilation',
     position: 0,
     video_url: '/Final Animation header.mp4',
-    title: 'Final Animation Header',
+    title: null,
     category: null,
     description: null,
     has_audio: true,

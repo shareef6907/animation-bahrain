@@ -60,6 +60,7 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
         autoPlay
         muted={isMuted}
         playsInline
+        preload="auto"
         onEnded={handleEnded}
         className="absolute inset-0 w-full h-full object-cover"
       />
