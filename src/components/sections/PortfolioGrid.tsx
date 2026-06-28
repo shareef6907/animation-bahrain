@@ -20,19 +20,30 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
 
   const loadVideo = useCallback(() => {
     const videoEl = videoRef.current
-    if (!videoEl || videoEl.src) return
-    videoEl.src = video.video_url
-    videoEl.load()
+    if (!videoEl) return
+    if (videoEl.src && videoEl.src !== video.video_url) {
+      videoEl.src = video.video_url
+      videoEl.load()
+    } else if (!videoEl.src) {
+      videoEl.src = video.video_url
+      videoEl.load()
+    }
     setIsLoaded(true)
   }, [video.video_url])
 
   useEffect(() => {
-    if (isEager) { loadVideo(); return }
+    if (isEager) {
+      loadVideo()
+      return
+    }
     const el = containerRef.current
     if (!el) return
     const observer = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) { loadVideo(); observer.disconnect() }
+        if (entries[0].isIntersecting) {
+          loadVideo()
+          observer.disconnect()
+        }
       },
       { rootMargin: '400px 0px' }
     )
@@ -40,14 +51,18 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
     return () => observer.disconnect()
   }, [isEager, loadVideo])
 
+  // Play/pause based on viewport visibility (eager items only)
   useEffect(() => {
     if (!isEager) return
     const videoEl = videoRef.current
     if (!videoEl) return
     const observer = new IntersectionObserver(
       (entries) => {
-        if (!entries[0].isIntersecting) { videoEl.pause() }
-        else { videoEl.play().catch(() => {}) }
+        if (!entries[0].isIntersecting) {
+          videoEl.pause()
+        } else {
+          videoEl.play().catch(() => {})
+        }
       },
       { rootMargin: '600px 0px' }
     )
@@ -60,23 +75,27 @@ function VideoCard({ video, index }: { video: PortfolioVideo; index: number }) {
       <div className="relative bg-black">
         {/* 16:9 container — black letterbox for portrait/square */}
         <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-          {isEager || isLoaded ? (
-            <video
-              ref={videoRef}
-              autoPlay
-              muted={isMuted}
-              loop
-              playsInline
-              preload={isEager ? 'metadata' : 'none'}
-              onLoadedData={() => setIsLoaded(true)}
-              className="absolute inset-0 w-full h-full object-contain"
-              style={{ backgroundColor: '#000' }}
-            />
-          ) : (
-            <div className="absolute inset-0 bg-black" />
-          )}
+          {/*
+            BUG FIX: Always render the <video> element.
+            Previously it was gated behind `isEager || isLoaded`, so non-eager
+            items had no <video> in the DOM and their IntersectionObserver
+            callbacks fired but isLoaded stayed false forever — causing the
+            portfolio to show ~3 videos then 14 blank slots.
+            Now src is set lazily, element is always present for intersection.
+          */}
+          <video
+            ref={videoRef}
+            autoPlay={isEager}
+            muted={isMuted}
+            loop
+            playsInline
+            preload={isEager ? 'metadata' : 'none'}
+            onLoadedData={() => setIsLoaded(true)}
+            className="absolute inset-0 w-full h-full object-contain"
+            style={{ backgroundColor: '#000' }}
+          />
           {/* Mute toggle — bottom right, minimal */}
-          {hasAudio && isLoaded && (
+          {hasAudio && (
             <button
               onClick={(e) => { e.preventDefault(); setIsMuted(!isMuted) }}
               aria-label={isMuted ? 'Unmute' : 'Mute'}
