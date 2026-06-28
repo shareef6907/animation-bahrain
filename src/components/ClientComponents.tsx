@@ -1,14 +1,5 @@
-"use client";
-
-import LenisProvider from "./LenisProvider";
-import CustomCursor from "./CustomCursor";
+'use client'
 
 export function ClientComponents({ children }: { children: React.ReactNode }) {
-  return (
-    <>
-      <LenisProvider />
-      <CustomCursor />
-      {children}
-    </>
-  );
+  return <>{children}</>
 }

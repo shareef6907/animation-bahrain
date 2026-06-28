@@ -10,7 +10,7 @@ const bebas = Bebas_Neue({
 
 const inter = Inter({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500'],
   variable: '--font-body',
   display: 'swap',
 })
@@ -18,7 +18,7 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL('https://animationbahrain.com'),
   title: 'Animation Bahrain | Cinematic Animation Studio',
-  description: 'Cinematic AI-powered animations for premium brands across the GCC. Built in Bahrain, made for the world.',
+  description: 'Cinematic brand films for premium clients across the GCC.',
   openGraph: {
     type: 'website',
     url: '/',
@@ -35,6 +35,7 @@ export default function RootLayout({
     <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
       <head>
         <link rel="preconnect" href="https://animation-bahrain-videos.s3.us-east-1.amazonaws.com" crossOrigin="anonymous" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </head>
       <body className="font-body bg-black text-white antialiased">
         {children}

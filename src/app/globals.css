@@ -7,9 +7,15 @@
 
 :root {
   --background: #000000;
-  --foreground: #FAFAFA;
+  --foreground: #fafafa;
+  /* Black Room accent — rationed to 2-3 uses total */
+  --accent: #8b5cf6;
+  --accent-foreground: #fafafa;
+  --muted: #333333;
+  --muted-foreground: #666666;
 }
 
+/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -29,26 +35,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar { width: 6px; }
+/* Minimal scrollbar */
+::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: #000; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #555; }
+::-webkit-scrollbar-thumb { background: #222; border-radius: 2px; }
 
-/* Section vertical rhythm */
-section {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+/* Selection */
+::selection {
+  background: #8b5cf6;
+  color: #fff;
 }
-@media (min-width: 768px) {
-  section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-}
-@media (min-width: 1024px) {
-  section {
-    padding-top: 6rem;
-    padding-bottom: 6rem;
-  }
+
+/* Remove default focus rings — custom focus instead */
+:focus-visible {
+  outline: 1px solid rgba(139, 92, 246, 0.6);
+  outline-offset: 3px;
 }

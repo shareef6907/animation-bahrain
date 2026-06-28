@@ -12,12 +12,19 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const [hasAudioTrack, setHasAudioTrack] = useState(false)
+  const [fadeIn, setFadeIn] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
     const saved = localStorage.getItem('ab_hero_muted')
     if (saved !== null) setIsMuted(saved === 'true')
   }, [])
+
+  useEffect(() => {
+    setFadeIn(false)
+    const t = setTimeout(() => setFadeIn(true), 100)
+    return () => clearTimeout(t)
+  }, [currentIndex])
 
   const toggleMute = () => {
     const newMuted = !isMuted
@@ -31,7 +38,6 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
     video.play().catch(() => {})
   }, [currentIndex])
 
-  // Detect audio track - use any to bypass TS
   useEffect(() => {
     const video = videoRef.current
     if (!video) return
@@ -53,45 +59,60 @@ export function HeroPlayer({ items }: HeroPlayerProps) {
 
   return (
     <section className="relative w-full h-screen bg-black overflow-hidden">
-      <video
-        key={current.id}
-        ref={videoRef}
-        src={current.video_url}
-        autoPlay
-        muted={isMuted}
-        playsInline
-        preload="auto"
-        onEnded={handleEnded}
-        className="absolute inset-0 w-full h-full object-cover"
-      />
-      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black via-black/50 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 flex items-end pb-24 px-6 lg:px-16 z-10">
-        <div className="max-w-2xl">
-          <div className="font-mono text-xs uppercase tracking-[0.3em] text-white/70 mb-4">
-            {current.category}
-          </div>
-          <h1 className="font-display text-white leading-none tracking-tight" style={{ fontSize: 'clamp(48px, 9vw, 120px)' }}>
-            {current.title}
-          </h1>
-          <p className="font-body text-white/80 text-base lg:text-lg mt-6 max-w-xl line-clamp-2">
-            {current.description}
-          </p>
-        </div>
+      {/* Film */}
+      <div
+        className="absolute inset-0 transition-opacity duration-1000"
+        style={{ opacity: fadeIn ? 1 : 0 }}
+      >
+        <video
+          key={current.id}
+          ref={videoRef}
+          src={current.video_url}
+          autoPlay
+          muted={isMuted}
+          playsInline
+          preload="auto"
+          onEnded={handleEnded}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
       </div>
+
+      {/* Bottom fade to black — lets film breathe */}
+      <div
+        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 50%, transparent 100%)',
+        }}
+      />
+
+      {/* Minimal headline — only this, no title/category/description */}
+      <div className="absolute inset-0 flex flex-col items-start justify-end z-10 pb-20 px-8 lg:pb-28 lg:px-20">
+        <p
+          className="font-mono text-xs uppercase tracking-[0.4em] text-white/40 mb-6"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.3s' }}
+        >
+          Animation Bahrain
+        </p>
+        <h2
+          className="font-display text-white leading-none tracking-tight max-w-4xl"
+          style={{ fontSize: 'clamp(36px, 6vw, 88px)', opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.5s' }}
+        >
+          We don&apos;t illustrate brands.{' '}
+          <em className="not-italic text-violet-400">We direct them.</em>
+        </h2>
+      </div>
+
+      {/* Mute toggle — almost invisible, bottom-right */}
       {(hasAudioTrack || current.has_audio) && (
         <button
           onClick={toggleMute}
-          className="absolute bottom-8 right-6 lg:right-16 z-20 w-12 h-12 rounded-full bg-black/50 border border-white/30 hover:bg-black/80 flex items-center justify-center text-white"
           aria-label={isMuted ? 'Unmute' : 'Mute'}
+          className="absolute bottom-8 right-8 z-20 w-9 h-9 flex items-center justify-center rounded-full bg-white/5 border border-white/10 hover:bg-white/15 text-white/60 hover:text-white transition-all duration-300"
+          style={{ opacity: fadeIn ? 1 : 0, transition: 'opacity 0.8s ease 0.8s' }}
         >
-          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          {isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
         </button>
       )}
-      <div className="absolute bottom-8 left-6 lg:left-16 z-10 flex gap-2">
-        {items.map((_, i) => (
-          <div key={i} className={i === currentIndex ? 'w-8 h-1 bg-white rounded-full' : 'w-2 h-1 bg-white/30 rounded-full'} />
-        ))}
-      </div>
     </section>
   )
 }
