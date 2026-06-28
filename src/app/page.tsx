@@ -9,7 +9,7 @@ import { ClientComponents } from '@/components/ClientComponents'
 import { getHeroVideos } from '@/lib/hero'
 import type { PortfolioVideo } from '@/lib/portfolio'
 
-export const revalidate = 60
+export const dynamic = 'force-dynamic'
 
 // Fallback portfolio data — newest-first order: BMW, Commercial1, Cream, then down to Fintech last
 const FALLBACK_PORTFOLIO: PortfolioVideo[] = [
