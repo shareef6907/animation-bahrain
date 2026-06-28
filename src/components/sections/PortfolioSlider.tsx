@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useEffect, useCallback } from 'react'
+import { useState, useRef, useEffect, useCallback, useMemo } from 'react'
 import { ChevronLeft, ChevronRight, Volume2, VolumeX } from 'lucide-react'
 import type { PortfolioVideo } from '@/lib/portfolio'
 import { motion } from 'framer-motion'
@@ -10,13 +10,24 @@ interface PortfolioSliderProps {
 }
 
 export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
+  // Reorder: Commercial1.mp4 second, Fintech Animation last
+  // Supabase desc sort: BMW(17), Commercial1(16), ..., Fintech(1)
+  // Target display order: BMW(17), Commercial1(16), ..., (Fintech at LAST)
+  const orderedVideos = useMemo(() => {
+    const fintechIdx = videos.findIndex(v => v.id === 'cbd01728-060a-4b10-ac31-75096e4dec9e')
+    if (fintechIdx === -1) return videos
+    const fintech = videos[fintechIdx]
+    const rest = videos.filter(v => v.id !== 'cbd01728-060a-4b10-ac31-75096e4dec9e')
+    return [...rest, fintech]
+  }, [videos])
+
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isMuted, setIsMuted] = useState(true)
   const [activeHasAudio, setActiveHasAudio] = useState(false)
   const videoRef = useRef<HTMLVideoElement>(null)
   const touchStartX = useRef<number>(0)
 
-  const current = videos[currentIndex]
+  const current = orderedVideos[currentIndex]
 
   const playAt = useCallback((index: number) => {
     setCurrentIndex(index)
@@ -26,16 +37,16 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
   // Preload next/prev videos
   useEffect(() => {
     const preload = (idx: number) => {
-      if (idx < 0 || idx >= videos.length) return
+      if (idx < 0 || idx >= orderedVideos.length) return
       const link = document.createElement('link')
       link.rel = 'preload'
       link.as = 'video'
-      link.href = videos[idx].video_url
+      link.href = orderedVideos[idx].video_url
       document.head.appendChild(link)
     }
     preload(currentIndex + 1)
     preload(currentIndex - 1)
-  }, [currentIndex, videos])
+  }, [currentIndex, orderedVideos])
 
   // Manage video element
   useEffect(() => {
@@ -48,7 +59,7 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
   }, [current])
 
   const prev = () => playAt(Math.max(0, currentIndex - 1))
-  const next = () => playAt(Math.min(videos.length - 1, currentIndex + 1))
+  const next = () => playAt(Math.min(orderedVideos.length - 1, currentIndex + 1))
 
   const onVideoCanPlay = () => {
     try {
@@ -91,7 +102,7 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
           Animation Portfolio
         </h1>
         <p className="font-body text-sm text-white/40 mt-3">
-          {currentIndex + 1} / {videos.length} videos
+          {currentIndex + 1} / {orderedVideos.length} videos
         </p>
       </div>
 
@@ -147,7 +158,7 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
 
             <button
               onClick={next}
-              disabled={currentIndex === videos.length - 1}
+              disabled={currentIndex === orderedVideos.length - 1}
               className="w-11 h-11 rounded-full flex items-center justify-center border border-white/20 text-white/60 hover:text-white hover:bg-white/10 disabled:opacity-25 disabled:cursor-not-allowed transition-all duration-300 backdrop-blur-sm"
             >
               <ChevronRight size={18} />
@@ -156,7 +167,7 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
 
           {/* Progress dots */}
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 flex gap-1.5 pb-4">
-            {videos.map((_, i) => (
+            {orderedVideos.map((_, i) => (
               <button
                 key={i}
                 onClick={() => playAt(i)}
@@ -174,7 +185,7 @@ export default function PortfolioSlider({ videos }: PortfolioSliderProps) {
 
         {/* Thumbnail strip */}
         <div className="flex gap-2 mt-4 overflow-x-auto pb-2 scrollbar-thin">
-          {videos.map((video, i) => (
+          {orderedVideos.map((video, i) => (
             <button
               key={video.id}
               onClick={() => playAt(i)}
