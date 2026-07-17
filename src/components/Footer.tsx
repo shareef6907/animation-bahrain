@@ -1,5 +1,10 @@
 import Link from 'next/link'
 
+const sisterSites = [
+  { href: "https://www.bahrainnights.com", label: "Bahrain Nights" },
+  { href: "https://www.premieralive.com", label: "Premiera Live" },
+];
+
 export function Footer() {
   const year = new Date().getFullYear()
 
@@ -36,6 +41,21 @@ export function Footer() {
               >
                 {label}
               </Link>
+            ))}
+          </div>
+
+          {/* Sister Sites */}
+          <div className="flex flex-wrap gap-4 justify-center">
+            {sisterSites.map((site) => (
+              <a
+                key={site.href}
+                href={site.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-body text-xs text-white/40 hover:text-amber-400 transition-colors"
+              >
+                {site.label}
+              </a>
             ))}
           </div>
 
